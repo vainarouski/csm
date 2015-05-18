@@ -1,20 +1,25 @@
 #!/bin/bash
 #
-#Commands to execute json_test.rb
+# Commands to execute json_test.rb
 #
-#Options:
+# Options:
+#
+# optional:
 # --test_schema_folder or -i - Relative path to the test schema folder, default value: ./etc
 # --report_folder or -o - Relative path to the output report file folder, default value: ./reports
 # --hostname or -h - The hostname of the test environment, default value: commonsensemedia.org
-# --method, "Test API method", :short => "-m", :type => :string, :default => default_method
-# --key, "Test API key", :short => "-k", :type => :string, :default => default_key
-# --limit, "Number of feeds which will be tested", :short => "-l", :type => :string, :default => default_limit
-# --dryrun, "Test script using local test.json file", :short => "-d", :type => :boolean, :default => false
+# --method or -m - Test API method, default value: browse
+# --key or -k -  Test API key, default value: fd4b46050e5eea76085349c6458e149d
+# --limit or -l - Number of feeds which will be tested, default value: nil
+# --dryrun or -d - Test script using local test.json file, default value: false
 #
-#  --category, "Test API category", :short => "-c", :type => :string
-#  --channel, "Test API channel", :short => "-n", :type => :string
+# required for all:
+#  --category or -c - Test API category
+#
+# required for reviews and lists:
+#  --channel or -n - Test API channel
 #
 #To install all necessary gems, uncomment bundle install
-#
 # bundle install
-  ruby ./lib/json_test.rb --category reviews --channel movie --limit 2
+
+ruby ./lib/json_test.rb --category reviews --channel movie --limit 2 --dryrun
