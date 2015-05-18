@@ -1,0 +1,319 @@
+
+{
+  "alternatives": [
+    {
+      "title": "Indiana Jones and the Raiders of the Lost Ark",
+      "id": 1259480,
+      "url": "http://www.commonsensemedia.org/movie-reviews/indiana-jones-and-the-raiders-of-the-lost-ark"
+    },
+    {
+      "title": "The Rocketeer",
+      "id": 1256905,
+      "url": "http://www.commonsensemedia.org/movie-reviews/the-rocketeer"
+    }
+  ],
+  "anyGood": "The story is an unabashed and un-ironic tribute to the days of cliff-hanger serials. The antagonistic-lover banter benefits from snappy delivery, but it's not quite up to the best of the 30's dialogue. It is not always easy to step back from amazement and admiration for the technology of the film to just enjoy the story. The scenes are superbly imaginative and Conran does more than create arresting visuals. He creates a world with consistent (and very dramatic) light sources and a sense of three-dimensional believability.Paltrow and Law are fine, as are Giovanni Ribisi as Law's mechanical whiz buddy who gets kidnapped by the robots and Angelina Jolie with an eye-patch as the endlessly sporty Commander Frankie, especially considering that they all spent weeks in an empty room being told to move precisely two feet to the right and then look amazed or resolute.",
+  "comingSoon": false,
+  "contentGrid": {
+    "consumerism": {
+      "rating": 0,
+      "text": "Not applicable",
+      "label": "Consumerism"
+    },
+    "drugs": {
+      "rating": 0,
+      "text": "Not applicable",
+      "label": "Drinking, drugs, & smoking"
+    },
+    "language": {
+      "rating": 0,
+      "text": "Not applicable",
+      "label": "Language"
+    },
+    "sex": {
+      "rating": 0,
+      "text": "Brief crude humor.",
+      "label": "Sexy Stuff"
+    },
+    "violence": {
+      "rating": 3,
+      "text": "Characters in peril, explosions, shooting.",
+      "label": "Violence & scariness"
+    }
+  },
+  "description": "In SKYCAPTAIN AND THE WORLD OF TOMORROW, dashing pilot Joe \"Sky Captain\" Sullivan (Jude Law) and intrepid reporter Polly Perkins (Gwyneth Paltrow) investigate the disappearance of a group of top scientists and the invasion of enormous robots in this magnificently imaginative tribute to the adventure films of the 1930's. Solving the puzzle -- and saving the world -- takes them from Manhattan to Tibet, from an aircraft landing strip that floats above the clouds to a dynamite-packed abandoned mine and the depths of the ocean. And every bit of it except for the actors, costumes, and a few props, is made from nothing but imagination and pixels.",
+  "oneLiner": "Lots for both kids and adults to enjoy.",
+  "parentsNeedToKnow": "Parents need to know that this movie has a good deal of intense peril and violence, including gunplay and explosions. There are some grisly images (skeletons, dead body) and some scary-looking robots. There's brief crude humor including non-sexual nudity (nothing shown).",
+  "product": {
+    "cast": {
+      "6665": "Angelina Jolie",
+      "12449": "Gwyneth Paltrow",
+      "14193": "Jude Law"
+    },
+    "directors": {
+      "8216": "Kerry Conran"
+    },
+    "genres": {
+      "4561": "Science Fiction"
+    },
+    "length": {
+      "units": "minutes",
+      "value": "106"
+    },
+    "studios": {
+      "5675": "Paramount Pictures"
+    },
+    "rating": {
+      "type": "mpaa",
+      "value": "PG",
+      "explanation": "sequences of stylized sci-fi violence and brief mild language",
+      "text": "PG for sequences of stylized sci-fi violence and brief mild language"
+    },
+    "releaseDates": [
+      {
+        "type": "theaters",
+        "date": "1095379200"
+      },
+      {
+        "type": "dvd",
+        "date": "1106611200"
+      }
+    ],
+    "awards": [],
+    "images": [
+      {
+        "type": "product",
+        "url": "http://d2e111jq13me73.cloudfront.net/sites/default/files/styles/api_product_large/public/product-images/csm-movie/sky-captain-and-world-tomorrow.jpg?itok=SYJktjgS"
+      }
+    ],
+    "references": [
+      {
+        "type": "upc",
+        "value": "032429072702"
+      },
+      {
+        "type": "upc",
+        "value": "097361182940"
+      },
+      {
+        "type": "upc",
+        "value": "097363434146"
+      },
+      {
+        "type": "upc",
+        "value": "032429000576"
+      },
+      {
+        "type": "upc",
+        "value": "032429000675"
+      },
+      {
+        "type": "upc",
+        "value": "097360704044"
+      },
+      {
+        "type": "asinstream",
+        "value": "B000IZA9NK"
+      },
+      {
+        "type": "asinproduct",
+        "value": "B0006IIPIK"
+      },
+      {
+        "type": "itunes",
+        "value": "id208716130"
+      },
+      {
+        "type": "googleplay",
+        "value": "GgyVUDFL1Uk"
+      },
+      {
+        "type": "upc",
+        "value": "883929300891"
+      },
+      {
+        "type": "upc",
+        "value": "097360513745"
+      },
+      {
+        "type": "upc",
+        "value": "097360684643"
+      },
+      {
+        "type": "upc",
+        "value": "032429072702"
+      },
+      {
+        "type": "upc",
+        "value": "032429060341"
+      },
+      {
+        "type": "upc",
+        "value": "097360513769"
+      },
+      {
+        "type": "upc",
+        "value": "097361182964"
+      },
+      {
+        "type": "upc",
+        "value": "032429072719"
+      },
+      {
+        "type": "upc",
+        "value": "971480640959"
+      },
+      {
+        "type": "netflix",
+        "value": "60036228"
+      },
+      {
+        "type": "tms",
+        "value": "MV001448920000"
+      },
+      {
+        "type": "tms",
+        "value": "MV001503990000"
+      },
+      {
+        "type": "tms",
+        "value": "MV001571800000"
+      },
+      {
+        "type": "tms",
+        "value": "MV001681190000"
+      },
+      {
+        "type": "tms",
+        "value": "MV001683100000"
+      },
+      {
+        "type": "tms",
+        "value": "MV002015080000"
+      },
+      {
+        "type": "tms",
+        "value": "MV002124240000"
+      },
+      {
+        "type": "tms",
+        "value": "MV002461550000"
+      },
+      {
+        "type": "tms",
+        "value": "MV002601800000"
+      },
+      {
+        "type": "tms",
+        "value": "MV003198660000"
+      },
+      {
+        "type": "tms",
+        "value": "MV003710050000"
+      },
+      {
+        "type": "tms",
+        "value": "MV004259580000"
+      },
+      {
+        "type": "tms",
+        "value": "MV004390730000"
+      },
+      {
+        "type": "tms",
+        "value": "MV006051560000"
+      },
+      {
+        "type": "tms",
+        "value": "MV006051570000"
+      },
+      {
+        "type": "tms",
+        "value": "MV006507550000"
+      },
+      {
+        "type": "tms",
+        "value": "MV007207580000"
+      },
+      {
+        "type": "tms",
+        "value": "MV007433840000"
+      }
+    ],
+    "id": 1234808
+  },
+  "slider": {
+    "status": "on",
+    "not_for_kids": 0,
+    "text": "OK for kids 8+",
+    "off_age": 6,
+    "on_age": 8,
+    "target_age": 8
+  },
+  "stars": 4,
+  "talkingPoints": [
+    "Families can talk about what they would photograph if they only had two shots left. Why? Why would Conran have The Wizard of Oz playing when Polly was at the theater? Why that particular scene? If you could design an entire movie, when and where would it take place and what would it look like? Conran's reported next film will take place on Mars!"
+  ],
+  "themes": {
+    "21607": "Adventures"
+  },
+  "stats": {
+    "csm_rating": {
+      "avg": {
+        "adult": "0.666667",
+        "all": "0.8",
+        "child": "0.909091",
+        "teen": "0.909091"
+      },
+      "count": {
+        "adult": "9",
+        "all": "20",
+        "child": "11",
+        "teen": "11"
+      }
+    },
+    "recommended_age": {
+      "avg": {
+        "adult": "8.6",
+        "all": "8.5",
+        "child": "8.33333",
+        "teen": "8.33333"
+      },
+      "count": {
+        "adult": "5",
+        "all": "8",
+        "child": "3",
+        "teen": "3"
+      }
+    },
+    "stars": {
+      "avg": {
+        "adult": "3.88889",
+        "all": "3.65",
+        "child": "3.45455",
+        "teen": "3.45455"
+      },
+      "count": {
+        "adult": "9",
+        "all": "20",
+        "child": "11",
+        "teen": "11"
+      }
+    },
+    "user_review_count": {
+      "count": {
+        "adult": "9",
+        "all": "20",
+        "child": "11",
+        "teen": "11"
+      }
+    }
+  },
+  "author": "Nell Minow",
+  "created": 1271965619,
+  "title": "Sky Captain and the World of Tomorrow",
+  "updated": 1431133802,
+  "id": 1249951,
+  "url": "http://www.commonsensemedia.org/movie-reviews/sky-captain-and-the-world-of-tomorrow",
+  "channel": "movie"
+}
