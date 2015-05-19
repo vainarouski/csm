@@ -21,5 +21,5 @@
 #
 #To install all necessary gems, uncomment bundle install
 # bundle install
-
-ruby ./lib/json_test.rb --category reviews --channel movie --limit 2 --dryrun
+#
+ruby ./lib/json_test.rb --category reviews --channel movie --limit 2 --dryrun true

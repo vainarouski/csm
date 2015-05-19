@@ -45,6 +45,7 @@ class JsonValidator
 
   def json_test
     test_report = {}
+    test_report[:start_time] = Time.now
     parsed_test_json.each do |feed|
       errors = JSON::Validator.fully_validate(parsed_json_schema, feed)
       error_messages = []
@@ -79,7 +80,7 @@ class JsonValidator
   def parsed_test_json
     begin
       if @test_parameters[:dryrun] == true
-        test_json = File.open("#{@test_parameters[:test_schema_folder]}/json_test.json").read
+        test_json = File.open("#{@test_parameters[:test_schema_folder]}/test.json").read
       else
         test_json = json_respond
       end
@@ -148,7 +149,6 @@ end
 #TODO: Need to test here if provided test_schema_folder and report_folder exist
 
   #File.directory?
-
 
    JsonValidator.new(opts).json_test
 
