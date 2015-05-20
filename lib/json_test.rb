@@ -80,7 +80,7 @@ class JsonValidator
   def parsed_test_json
     begin
       if @test_parameters[:dryrun] == true
-        test_json = File.open("#{@test_parameters[:test_schema_folder]}/test.json").read
+        test_json = File.open("#{@test_parameters[:test_schema_folder].chomp}/test.json").read
       else
         test_json = json_respond
       end
@@ -97,7 +97,7 @@ class JsonValidator
 
   def test_reporter(test_report)
     html = TestReportWriter.html_builder(test_report)
-    File.write("#{@test_parameters[:report_folder]}/report.html", html)
+    File.write("#{@test_parameters[:report_folder].chomp}/report.html", html)
   end
 end
 
@@ -125,8 +125,8 @@ if (__FILE__ == $0)
 Where options are:
 
     EOS
-  opt :test_schema_folder, "Relative path to the test schema folder", :short => "-i", :default => default_schema_folder
-  opt :report_folder, "Relative path to the output report file folder", :short => "-o", :type => :string, :default => default_report_folder
+  opt :test_schema_folder, "Relative path to the test schema folder inside repository", :short => "-i", :default => default_schema_folder
+  opt :report_folder, "Relative path to the output report file folde inside repositoryr", :short => "-o", :type => :string, :default => default_report_folder
   opt :hostname, "The hostname of the test environment", :short => "-h", :type => :string, :default => default_hostname
   opt :method, "Test API method", :short => "-m", :type => :string, :default => default_method
   opt :key, "Test API key", :short => "-k", :type => :string, :default => default_key
@@ -135,22 +135,35 @@ Where options are:
 
   opt :category, "Test API category", :short => "-c", :type => :string
   opt :channel, "Test API channel", :short => "-n", :type => :string
-end
-
-# option validation
-Trollop::die :category, "Test API category missed or incorrect!" unless (categories.include?(opts[:category].chomp))
+  end
 
 
-if opts[:category] == "reviews" || opts[:category] =="lists"
-  Trollop::die :channel, "Test API channel missed or incorrect!" unless (channels.include?(opts[:channel].chomp))
-end
+  # option validation
+  Trollop::die :category, "Test API category missed or incorrect!" unless (categories.include?(opts[:category].chomp))
+
+  if opts[:category] == "reviews" || opts[:category] =="lists"
+    Trollop::die :channel, "Test API channel missed or incorrect!" unless (channels.include?(opts[:channel].chomp))
+    Trollop::die :test_schema_folder, "Test schema folder or file incorrect!" unless (File.exists?("#{opts[:test_schema_folder]}/#{opts[:category]}_#{opts[:channel]}.json"))
+  else
+    Trollop::die :test_schema_folder, "Test schema folder or file incorrect!" unless (File.exists?("#{opts[:test_schema_folder]}/#{opts[:category]}.json"))
+  end
+
+  # Check if report_folder exist, if not create it
+  folder = opts[:report_folder]
+  unless Dir.exist?(folder)
+    folders = folder.chomp.split("/")
+    path = "./"
+    folders.each do |subfolder|
+      next if subfolder == '.'
+      path += "#{subfolder}/"
+      unless Dir.exist?(path)
+        Dir.mkdir(path)
+      end
+    end
+  end
 
 
-#TODO: Need to test here if provided test_schema_folder and report_folder exist
-
-  #File.directory?
-
-   JsonValidator.new(opts).json_test
+ JsonValidator.new(opts).json_test
 
 end
 

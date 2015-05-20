@@ -5,8 +5,8 @@
 # Options:
 #
 # optional:
-# --test_schema_folder or -i - Relative path to the test schema folder, default value: ./etc
-# --report_folder or -o - Relative path to the output report file folder, default value: ./reports
+# --test_schema_folder or -i - Relative path to the test schema folder inside repository, default value: ./etc
+# --report_folder or -o - Relative path to the output report file folder inside repository, default value: ./reports
 # --hostname or -h - The hostname of the test environment, default value: commonsensemedia.org
 # --method or -m - Test API method, default value: browse
 # --key or -k -  Test API key, default value: fd4b46050e5eea76085349c6458e149d
@@ -22,4 +22,4 @@
 #To install all necessary gems, uncomment bundle install
 # bundle install
 #
-ruby ./lib/json_test.rb --category reviews --channel movie --limit 2 --dryrun true
+ruby ./lib/json_test.rb --category reviews --channel movie --limit 2 --dryrun true --report-folder ./reports/reviews_movie
