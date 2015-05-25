@@ -15,14 +15,22 @@ class JsonValidator
 
   def initialize(test_parameters = {})
     @test_parameters = test_parameters
+    @verbose = test_parameters[:verbose]
   end
 
 
   def url
-    default_url = "http://api.#{@test_parameters[:hostname]}/api/v2/#{@test_parameters[:category]}/#{@test_parameters[:method]}?api_key=#{@test_parameters[:key]}&channel=#{@test_parameters[:channel]}"
+    if @test_parameters[:channel].nil?
+      default_url = "http://api.#{@test_parameters[:hostname]}/api/v2/#{@test_parameters[:category]}/#{@test_parameters[:method]}?api_key=#{@test_parameters[:key]}"
+    else
+      default_url = "http://api.#{@test_parameters[:hostname]}/api/v2/#{@test_parameters[:category]}/#{@test_parameters[:method]}?api_key=#{@test_parameters[:key]}&channel=#{@test_parameters[:channel]}"
+    end
+
     unless @test_parameters[:limit].nil?
       default_url += "&limit=#{@test_parameters[:limit].chomp}"
     end
+
+    verbose_message("Generated url: #{default_url}") if @verbose
 
     default_url
   end
@@ -30,13 +38,21 @@ class JsonValidator
 
   def json_respond
 
+
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Get.new(uri.request_uri)
+
+    verbose_message("Loading json repond...") if @verbose
+
     response = http.request(request)
 
     if response.code == "200"
+
+      verbose_message("Json repond successfully loaded.") if @verbose
+
       response.body
+
     else
       raise "ERROR!!! URl: #{uri} is unreachable!"
     end
@@ -44,11 +60,21 @@ class JsonValidator
 
 
   def json_test
+
+
     test_report = {}
     test_report[:start_time] = Time.now
-    parsed_test_json.each do |feed|
-      errors = JSON::Validator.fully_validate(parsed_json_schema, feed)
+    index = 1
+    json_file = parsed_test_json
+    json_schema = parsed_json_schema
+
+    verbose_message("Testing json file against json schema...") if @verbose
+    verbose_message("Tested feeds: ") if @verbose
+
+    json_file.each do |feed|
+      errors = JSON::Validator.fully_validate(json_schema, feed)
       error_messages = []
+
       errors.each do |error|
         /The property \'(.+?)\' (.+?) in/.match error
         error_message = {}
@@ -56,8 +82,16 @@ class JsonValidator
         error_message[:message] = Regexp.last_match[2]
         error_messages << error_message
       end
+
+
+      print "\r#{index}" if @verbose
+
+      index += 1
+
       test_report[feed["id"]] = error_messages
     end
+
+    verbose_message("") if @verbose
 
     test_reporter(test_report)
   end
@@ -65,9 +99,21 @@ class JsonValidator
 
   def parsed_json_schema
     begin
-      json_schema_name = "#{@test_parameters[:test_schema_folder]}/#{@test_parameters[:category]}_#{@test_parameters[:channel]}.json"
+
+      verbose_message("Parsing json schema...") if @verbose
+
+      if @test_parameters[:channel].nil?
+        json_schema_name = "#{@test_parameters[:test_schema_folder]}/#{@test_parameters[:category]}.json"
+      else
+        json_schema_name = "#{@test_parameters[:test_schema_folder]}/#{@test_parameters[:category]}_#{@test_parameters[:channel]}.json"
+      end
+
       json_file = File.open(json_schema_name).read
-      JSON.parse(json_file)
+      parsed_schema = JSON.parse(json_file)
+
+      verbose_message("Json schema successfully parced.") if @verbose
+
+      parsed_schema
 
     rescue Errno::ENOENT => fe
       raise "JSON schema file not found!!! Error: " + fe.to_s
@@ -79,15 +125,24 @@ class JsonValidator
 
   def parsed_test_json
     begin
+
       if @test_parameters[:dryrun] == true
         test_json = File.open("#{@test_parameters[:test_schema_folder].chomp}/test.json").read
+
+        verbose_message("Dryrun mode, using #{@test_parameters[:test_schema_folder].chomp}/test.json") if @verbose
       else
         test_json = json_respond
       end
 
-      JSON.parse(test_json)
+      verbose_message("Parsing json file...") if @verbose
 
-  rescue Errno::ENOENT => fe
+      parced_file = JSON.parse(test_json)
+
+      verbose_message("Json file successfully parced.") if @verbose
+
+      parced_file
+
+    rescue Errno::ENOENT => fe
     raise "Test JSON not found!!! Error: " + fe.to_s
   rescue Exception => e
     raise "Test JSON parse error!!! Error: " + e.to_s
@@ -96,8 +151,23 @@ class JsonValidator
 
 
   def test_reporter(test_report)
+
+    verbose_message("Building test report...") if @verbose
+
     html = TestReportWriter.html_builder(test_report)
-    File.write("#{@test_parameters[:report_folder].chomp}/report.html", html)
+    unless @test_parameters[:channel].nil?
+      file_name = "#{@test_parameters[:report_folder].chomp}/#{Time.now.strftime("%m_%d_%Y_%H:%M:%S")}_#{@test_parameters[:category]}_#{@test_parameters[:channel]}.html"
+    else
+      file_name = "#{@test_parameters[:report_folder].chomp}/#{Time.now.strftime("%m_%d_%Y_%H:%M:%S")}_#{@test_parameters[:category]}.html"
+    end
+
+    File.write(file_name, html)
+
+    verbose_message("Test Report created: #{file_name}") if @verbose
+  end
+
+  def verbose_message(message)
+    puts message
   end
 end
 
@@ -132,6 +202,8 @@ Where options are:
   opt :key, "Test API key", :short => "-k", :type => :string, :default => default_key
   opt :limit, "Number of feeds which will be tested", :short => "-l", :type => :string, :default => default_limit
   opt :dryrun, "Test script using local test.json file", :short => "-d", :type => :boolean, :default => false
+  opt :verbose, "Verbose mode", :short => "-v", :type => :boolean, :default => true
+
 
   opt :category, "Test API category", :short => "-c", :type => :string
   opt :channel, "Test API channel", :short => "-n", :type => :string
@@ -141,7 +213,7 @@ Where options are:
   # option validation
   Trollop::die :category, "Test API category missed or incorrect!" unless (categories.include?(opts[:category].chomp))
 
-  if opts[:category] == "reviews" || opts[:category] =="lists"
+  if opts[:category] == "reviews"
     Trollop::die :channel, "Test API channel missed or incorrect!" unless (channels.include?(opts[:channel].chomp))
     Trollop::die :test_schema_folder, "Test schema folder or file incorrect!" unless (File.exists?("#{opts[:test_schema_folder]}/#{opts[:category]}_#{opts[:channel]}.json"))
   else
@@ -161,7 +233,6 @@ Where options are:
       end
     end
   end
-
 
  JsonValidator.new(opts).json_test
 

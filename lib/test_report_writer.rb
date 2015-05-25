@@ -69,9 +69,9 @@ module TestReportWriter
             </tr>
     EOS
 
+    index = 1
     test_report.each do |tc_id, tc|
        next if tc_id == :start_time || tc.length == 0
-      index = 1
       tc.each do |error_message|
       report_tc_summary += <<-EOS
             <tr>
@@ -83,6 +83,8 @@ module TestReportWriter
     end
 
      report_footer = <<-EOS
+          </table>
+          </center>
           </body>
           </html>
     EOS
