@@ -87,29 +87,7 @@
        "type": "object",
        "properties": {
 
-         "cast": {
-           "type": "object",
-           "patternProperties": {
-             "^[0-9]+$": {
-               "type": "string",
-               "minLength": 2
-             }
-           },
-           "maxProperties": 5,
-           "uniqueItems": true
-         },
-
-         "directors": {
-           "type": "object",
-           "patternProperties": {
-             "^[0-9]+$": {
-               "type": "string",
-               "minLength": 2
-             }
-           },
-           "maxProperties": 5,
-           "uniqueItems": true
-         },
+         "id": { "type": "integer"},
 
          "genres": {
            "type": "object",
@@ -121,84 +99,6 @@
            },
            "maxProperties": 5,
            "uniqueItems": true
-         },
-
-         "length": {
-           "properties": {
-             "units": {
-               "enum": ["minutes"]
-             },
-             "value": {
-               "type": "string",
-               "pattern": "^[0-9]+$"
-             }
-           },
-           "required": ["units", "value"],
-           "additionalProperties": false
-         },
-
-         "studios": {
-           "patternProperties": {
-             "^[0-9]+$": {
-               "type": "string",
-               "minLength": 2
-             },
-             "minProperties": 1
-           }
-         },
-
-         "rating": {
-           "type": "object",
-           "properties": {
-             "type":{
-               "enum": ["mpaa"]
-             },
-             "value": {
-               "enum": ["G", "PG", "PG-13", "R", "NR"]
-             },
-
-             "explanation": {
-               "type": "string",
-               "minLength": 2
-             },
-
-             "text": {
-               "type": "string",
-               "minLength": 2
-             }
-           },
-           "required": [ "type", "value", "explanation", "text" ],
-           "additionalProperties": false
-         },
-
-         "releaseDates": {
-           "type": "array",
-           "items": {
-             "type": "object",
-               "properties": {
-                 "type": {
-                   "enum": ["theaters", "dvd"]
-                 },
-                 "date": {
-                   "type": "string",
-                   "pattern": "^[\\-0-9]+$"
-                 }
-               },
-               "required": [ "type", "date"],
-               "additionalProperties": false
-             },
-
-           "minItems": 1,
-           "uniqueItems": true
-         },
-
-         "awards": {
-           "patternProperties": {
-             "^[0-9]+$": {
-               "type": "string",
-               "minLength": 2
-             }
-           }
          },
 
          "images": {
@@ -225,35 +125,30 @@
            "uniqueItems": true
          },
 
-
-         "references": {
-           "type": "array",
-           "items": {
-             "type": "object",
-             "properties": {
-
-               "type": {
-                 "enum": ["upc", "netflix", "itunes", "googleplay", "asinproduct", "asinstream", "tms"]
-               },
-
-               "value": {
-                 "type": "string",
-                 "minLength": 2
-               }
-             },
-
-             "required": [ "type", "value"],
-             "additionalProperties": false
-           },
-
-           "minItems": 1,
-           "uniqueItems": true
+         "awards": {
+           "patternProperties": {
+             "^[0-9]+$": {
+               "type": "string",
+               "minLength": 2
+             }
+           }
          },
 
-         "id": { "type": "integer"}
+         "url": {
+           "type": "string",
+           "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+         },
+
+         "priceStructure": {
+           "patternProperties": {
+             "^[0-9]+$": {
+               "enum": ["Free", "Free to Try", "Paid"]
+             }
+           }
+         }
        },
 
-       "required": [ "cast", "directors", "genres", "length", "studios", "rating", "releaseDates", "awards", "images", "references", "id"],
+       "required": [ "id", "genres", "images", "awards", "url", "priceStructure"],
        "additionalProperties": false
      },
 
@@ -345,8 +240,7 @@
                   "html5",
                   "mobile",
                   "html5_ff",
-                  "mobile_ff",
-                  "prores"
+                  "mobile_ff"
                 ]
               },
 
@@ -372,7 +266,7 @@
                 "additionalProperties": false
               }
             },
-            "required": ["type", "uri"],
+            "required": ["type", "uri", "thumbnail"],
             "additionalProperties": false
           },
           "minItems": 1,
@@ -681,7 +575,153 @@
 
     "channel": {
       "enum": ["movie", "game", "tv", "app", "music", "book", "website"]
+    },
+
+    "learningRating":{
+      "type": "object",
+      "properties": {
+
+        "author": {
+          "type": "string",
+          "minLength": 2
+        },
+
+        "dimensions": {
+          "type": "object",
+          "properties": {
+
+            "engagement":{
+              "type": "object",
+              "properties": {
+
+                "rating": {
+                  "rating": "integer",
+                  "minimum": 0,
+                  "maximum": 5
+                },
+
+                "explanation": {
+                  "type": "string",
+                  "minLength": 2
+                }
+              },
+
+              "required": [ "rating", "explanation"],
+              "additionalProperties": false
+            },
+
+            "learningApproach":{
+              "type": "object",
+              "properties": {
+
+                "rating": {
+                  "rating": "integer",
+                  "minimum": 0,
+                  "maximum": 5
+                },
+
+                "explanation": {
+                  "type": "string",
+                  "minLength": 2
+                }
+              },
+
+              "required": [ "rating", "explanation"],
+              "additionalProperties": false
+            },
+
+            "support":{
+              "type": "object",
+              "properties": {
+
+                "rating": {
+                  "rating": "integer",
+                  "minimum": 0,
+                  "maximum": 5
+                },
+
+                "explanation": {
+                  "type": "string",
+                  "minLength": 2
+                }
+              },
+
+              "required": [ "rating", "explanation"],
+              "additionalProperties": false
+            }
+          },
+
+          "additionalProperties": false
+        },
+
+        "whatKidsCanLearn": {
+          "type": "string",
+          "minLength": 2
+        },
+
+        "rating": {
+          "enum": [ "1", "2", "3", "4", "5"]
+        },
+
+        "howParentsCanHelp": {
+          "type": "string",
+          "minLength": 2
+        },
+
+        "educationalIntent": { "type": "boolean"},
+
+        "subjects": {
+          "type": "object",
+          "patternProperties": {
+            "^[0-9]+$": {
+              "type": "string",
+              "minLength": 2
+            }
+          },
+          "uniqueItems": true
+        },
+
+        "skills": {
+          "type": "object",
+          "patternProperties": {
+            "^[0-9]+$": {
+              "type": "object",
+              "properties": {
+
+                "name": {
+                  "type": "string",
+                  "minLength": 2
+                },
+
+                "terms": {
+                  "type": "object",
+                  "patternProperties": {
+                    "type": "string",
+                    "minLength": 2
+                  }
+                }
+              },
+
+              "required": [ "name", "terms"],
+              "additionalProperties": false
+            }
+          }
+        }
+
+      },
+      "required": [
+        "author",
+        "dimensions",
+        "whatKidsCanLearn",
+        "rating",
+        "howParentsCanHelp",
+        "educationalIntent",
+        "subjects",
+        "skills"
+      ],
+      "additionalProperties": false
     }
+
   },
   "required": [
     "alternatives",

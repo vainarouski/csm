@@ -87,27 +87,30 @@
        "type": "object",
        "properties": {
 
-         "cast": {
-           "type": "object",
-           "patternProperties": {
-             "^[0-9]+$": {
-               "type": "string",
-               "minLength": 2
-             }
-           },
-           "maxProperties": 5,
-           "uniqueItems": true
-         },
+         "id": { "type": "integer"},
 
-         "directors": {
-           "type": "object",
-           "patternProperties": {
-             "^[0-9]+$": {
-               "type": "string",
-               "minLength": 2
-             }
+         "references": {
+           "type": "array",
+           "items": {
+             "type": "object",
+             "properties": {
+
+               "type": {
+                 "enum": ["upc", "netflix", "itunes", "googleplay", "asinproduct", "asinstream", "tms"]
+               },
+
+               "value": {
+                 "type": "string",
+                 "minLength": 2
+
+               }
+             },
+
+             "required": [ "type", "value"],
+             "additionalProperties": false
            },
-           "maxProperties": 5,
+
+           "minItems": 1,
            "uniqueItems": true
          },
 
@@ -121,84 +124,6 @@
            },
            "maxProperties": 5,
            "uniqueItems": true
-         },
-
-         "length": {
-           "properties": {
-             "units": {
-               "enum": ["minutes"]
-             },
-             "value": {
-               "type": "string",
-               "pattern": "^[0-9]+$"
-             }
-           },
-           "required": ["units", "value"],
-           "additionalProperties": false
-         },
-
-         "studios": {
-           "patternProperties": {
-             "^[0-9]+$": {
-               "type": "string",
-               "minLength": 2
-             },
-             "minProperties": 1
-           }
-         },
-
-         "rating": {
-           "type": "object",
-           "properties": {
-             "type":{
-               "enum": ["mpaa"]
-             },
-             "value": {
-               "enum": ["G", "PG", "PG-13", "R", "NR"]
-             },
-
-             "explanation": {
-               "type": "string",
-               "minLength": 2
-             },
-
-             "text": {
-               "type": "string",
-               "minLength": 2
-             }
-           },
-           "required": [ "type", "value", "explanation", "text" ],
-           "additionalProperties": false
-         },
-
-         "releaseDates": {
-           "type": "array",
-           "items": {
-             "type": "object",
-               "properties": {
-                 "type": {
-                   "enum": ["theaters", "dvd"]
-                 },
-                 "date": {
-                   "type": "string",
-                   "pattern": "^[\\-0-9]+$"
-                 }
-               },
-               "required": [ "type", "date"],
-               "additionalProperties": false
-             },
-
-           "minItems": 1,
-           "uniqueItems": true
-         },
-
-         "awards": {
-           "patternProperties": {
-             "^[0-9]+$": {
-               "type": "string",
-               "minLength": 2
-             }
-           }
          },
 
          "images": {
@@ -225,35 +150,106 @@
            "uniqueItems": true
          },
 
+         "awards": {
+           "patternProperties": {
+             "^[0-9]+$": {
+               "type": "string",
+               "minLength": 2
+             }
+           }
+         },
 
-         "references": {
+         "types": {
+           "patternProperties": {
+             "^[0-9]+$": {
+               "enum": ["Fiction", "Non-Fiction"]
+             }
+           }
+         },
+
+         "releaseDate": { "type": "integer" },
+
+
+         "readingLevels": {
            "type": "array",
            "items": {
              "type": "object",
              "properties": {
 
                "type": {
-                 "enum": ["upc", "netflix", "itunes", "googleplay", "asinproduct", "asinstream", "tms"]
+                 "enum": ["publisher", "read_aloud"]
                },
 
-               "value": {
-                 "type": "string",
-                 "minLength": 2
+               "from": {
+                 "type": "integer",
+                 "minimum": 0,
+                 "maximum": 18
+               },
+
+               "to": {
+                 "type": "integer",
+                 "minimum": 0,
+                 "maximum": 18
                }
              },
 
-             "required": [ "type", "value"],
+             "required": [ "type", "from", "to" ],
              "additionalProperties": false
            },
-
            "minItems": 1,
+           "maxItems": 3,
            "uniqueItems": true
          },
 
-         "id": { "type": "integer"}
+         "publishers": {
+           "patternProperties": {
+             "^[0-9]+$": {
+               "type": "string",
+               "minLength": 2
+             }
+           }
+         },
+
+         "pages": {
+           "type": "string",
+           "pattern": "^\\d+$"
+         },
+
+         "illustrators": {
+           "type": "object",
+           "patternProperties": {
+             "^[0-9]+$": {
+               "type": "string",
+               "minLength": 2
+             }
+           },
+           "maxProperties": 5,
+           "uniqueItems": true
+         },
+
+         "formats": {
+           "patternProperties": {
+             "^[0-9]+$": {
+               "type": "string",
+               "minLength": 2
+             }
+           }
+         },
+
+         "authors": {
+           "type": "object",
+           "patternProperties": {
+             "^[0-9]+$": {
+               "type": "string",
+               "minLength": 2
+             }
+           },
+           "maxProperties": 5,
+           "uniqueItems": true
+         }
        },
 
-       "required": [ "cast", "directors", "genres", "length", "studios", "rating", "releaseDates", "awards", "images", "references", "id"],
+       "required": [ "id", "references", "genres", "images", "awards", "types", "releaseDate", "readingLevels", "publishers", "pages", "illustrators", "formats", "authors"],
        "additionalProperties": false
      },
 
@@ -345,8 +341,7 @@
                   "html5",
                   "mobile",
                   "html5_ff",
-                  "mobile_ff",
-                  "prores"
+                  "mobile_ff"
                 ]
               },
 
@@ -372,7 +367,7 @@
                 "additionalProperties": false
               }
             },
-            "required": ["type", "uri"],
+            "required": ["type", "uri", "thumbnail"],
             "additionalProperties": false
           },
           "minItems": 1,
@@ -696,6 +691,7 @@
     "stars",
     "talkingPoints",
     "themes",
+    "stats",
     "author",
     "created",
     "title",

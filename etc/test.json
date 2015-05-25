@@ -16,7 +16,7 @@
     "comingSoon": false,
     "contentGrid": {
       "consumerism": {
-        "rating": 0,
+        "rating": 5,
         "text": "Not applicable",
         "label": "Consumerism"
       },
@@ -46,6 +46,9 @@
     "parentsNeedToKnow": "Parents need to know that this movie has a good deal of intense peril and violence, including gunplay and explosions. There are some grisly images (skeletons, dead body) and some scary-looking robots. There's brief crude humor including non-sexual nudity (nothing shown).",
     "product": {
       "cast": {
+        "6665": "Angelina Jolie",
+        "12449": "Gwyneth Paltrow",
+        "14193": "Jude Law",
         "6665": "Angelina Jolie",
         "12449": "Gwyneth Paltrow",
         "14193": "Jude Law"

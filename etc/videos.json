@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+
+    "channel": {
+      "type": "array",
+      "items": {
+        "enum": ["movie", "game", "tv", "app", "music", "book", "website"]
+      },
+      "minItems": 1,
+      "maxItems": 1
+    },
+
+    "summary": {
+      "type": "string",
+      "minLength": 2
+    },
+
+    "url": {
+      "url": "string",
+      "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+    },
+
+    "id": {
+      "type": "integer"
+    },
+
+    "parentIDs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^\\d+$"
+      }
+    },
+
+    "updated": {
+      "type": "integer"
+    },
+
+    "title": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 255
+    },
+
+    "created": {
+      "type": "integer"
+    },
+
+    "author": {
+      "enum": ["Common Sense Media"]
+    },
+
+    "types": {
+      "type": "array",
+      "items": {
+        "enum": ["review", "tip"]
+      },
+      "minItems": 1
+    },
+
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 2
+      },
+      "minItems": 1
+    },
+
+    "thumbnail": {
+      "type": "object",
+      "properties": {
+        "small": {
+          "type": "string",
+          "minLength": 2
+        },
+
+        "large": {
+          "small": "string",
+          "minLength": 2
+        }
+      },
+      "required": ["small", "large"],
+      "additionalProperties": false
+    },
+
+    "genres": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9]+$": {
+          "type": "string",
+          "minLength": 2
+        }
+      },
+      "maxProperties": 5,
+      "uniqueItems": true
+    },
+
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+
+          "type": {
+            "enum": [
+              "flash",
+              "html5",
+              "mobile",
+              "html5_ff",
+              "mobile_ff",
+              "prores"
+            ]
+          },
+
+          "uri": {
+            "type": "string",
+            "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+          }
+        },
+        "required": ["type", "uri"],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+
+    "ages": {
+      "type": "object",
+      "properties": {
+        "min":{
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 17
+        },
+        "max": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 17
+        }
+      },
+      "required": [ "min", "max"],
+      "additionalProperties": false
+    }
+  },
+
+  "required": [
+    "channel",
+    "summary",
+    "url",
+    "id",
+    "parentIDs",
+    "updated",
+    "title",
+    "created",
+    "author",
+    "types",
+    "topics",
+    "thumbnail",
+    "genres",
+    "files",
+    "ages"
+  ],
+  "additionalProperties": false
+}
