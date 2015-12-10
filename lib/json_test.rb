@@ -20,10 +20,16 @@ class JsonValidator
 
 
   def url
-    if @test_parameters[:channel].nil?
-      default_url = "http://api.#{@test_parameters[:hostname]}/api/v2/#{@test_parameters[:category]}/#{@test_parameters[:method]}?api_key=#{@test_parameters[:key]}"
+    if @test_parameters[:secured] == true
+      protocol = "https"
     else
-      default_url = "http://api.#{@test_parameters[:hostname]}/api/v2/#{@test_parameters[:category]}/#{@test_parameters[:method]}?api_key=#{@test_parameters[:key]}&channel=#{@test_parameters[:channel]}"
+      protocol = "http"
+    end
+
+    if @test_parameters[:channel].nil?
+      default_url = "#{protocol}://api.#{@test_parameters[:hostname]}/api/v2/#{@test_parameters[:category]}/#{@test_parameters[:method]}?api_key=#{@test_parameters[:key]}"
+    else
+      default_url = "#{protocol}://api.#{@test_parameters[:hostname]}/api/v2/#{@test_parameters[:category]}/#{@test_parameters[:method]}?api_key=#{@test_parameters[:key]}&channel=#{@test_parameters[:channel]}"
     end
 
     unless @test_parameters[:limit].nil?
@@ -43,9 +49,14 @@ class JsonValidator
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Get.new(uri.request_uri)
 
+    if @test_parameters[:secured] == true
+      http.use_ssl = true
+    end
+
     verbose_message("Loading json repond...") if @verbose
 
     response = http.request(request)
+
 
     if response.code == "200"
 
@@ -203,8 +214,7 @@ Where options are:
   opt :limit, "Number of feeds which will be tested", :short => "-l", :type => :string, :default => default_limit
   opt :dryrun, "Test script using local test.json file", :short => "-d", :type => :boolean, :default => false
   opt :verbose, "Verbose mode", :short => "-v", :type => :boolean, :default => true
-
-
+  opt :secured, "Use secured URL", :short => "-s", :type => :boolean, :default => false
   opt :category, "Test API category", :short => "-c", :type => :string
   opt :channel, "Test API channel", :short => "-n", :type => :string
   end
