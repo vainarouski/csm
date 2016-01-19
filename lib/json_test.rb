@@ -27,9 +27,9 @@ class JsonValidator
     end
 
     if @test_parameters[:channel].nil?
-      default_url = "#{protocol}://api.#{@test_parameters[:hostname]}/api/v2/#{@test_parameters[:category]}/#{@test_parameters[:method]}?api_key=#{@test_parameters[:key]}"
+      default_url = "#{protocol}://api.#{@test_parameters[:hostname]}/api/v2/#{@test_parameters[:category]}/#{@test_parameters[:method]}?api_key=#{@test_parameters[:key]}&format=json"
     else
-      default_url = "#{protocol}://api.#{@test_parameters[:hostname]}/api/v2/#{@test_parameters[:category]}/#{@test_parameters[:method]}?api_key=#{@test_parameters[:key]}&channel=#{@test_parameters[:channel]}"
+      default_url = "#{protocol}://api.#{@test_parameters[:hostname]}/api/v2/#{@test_parameters[:category]}/#{@test_parameters[:method]}?api_key=#{@test_parameters[:key]}&channel=#{@test_parameters[:channel]}&format=json"
     end
 
     unless @test_parameters[:limit].nil?
