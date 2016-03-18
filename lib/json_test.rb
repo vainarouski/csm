@@ -27,9 +27,9 @@ class JsonValidator
     end
 
     if @test_parameters[:channel].nil?
-      default_url = "#{protocol}://api.#{@test_parameters[:hostname]}/api/v2/#{@test_parameters[:category]}/#{@test_parameters[:method]}?api_key=#{@test_parameters[:key]}&format=json"
+      default_url = "#{protocol}://#{@test_parameters[:hostname]}/api/v2/#{@test_parameters[:category]}/#{@test_parameters[:method]}?api_key=#{@test_parameters[:key]}&format=json"
     else
-      default_url = "#{protocol}://api.#{@test_parameters[:hostname]}/api/v2/#{@test_parameters[:category]}/#{@test_parameters[:method]}?api_key=#{@test_parameters[:key]}&channel=#{@test_parameters[:channel]}&format=json"
+      default_url = "#{protocol}://#{@test_parameters[:hostname]}/api/v2/#{@test_parameters[:category]}/#{@test_parameters[:method]}?api_key=#{@test_parameters[:key]}&channel=#{@test_parameters[:channel]}&format=json"
     end
 
     unless @test_parameters[:limit].nil?
@@ -189,7 +189,7 @@ if (__FILE__ == $0)
   test_title = "Common Sense Media JSON test"
   default_schema_folder = "./etc"
   default_report_folder = "./reports"
-  default_hostname = "commonsensemedia.org"
+  default_hostname = "api.commonsensemedia.org"
   default_method = "browse"
   default_key = "fd4b46050e5eea76085349c6458e149d"
   default_limit = nil

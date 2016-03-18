@@ -23,8 +23,8 @@
 #To install all necessary gems, uncomment bundle install
 # bundle install
 #
-#ruby ./lib/json_test.rb -s --category reviews --channel movie --report-folder ./reports/reviews_movie
-ruby ./lib/json_test.rb -s --category reviews --channel game --report-folder ./reports/reviews_game
+ruby ./lib/json_test.rb -h "qa.commonsensemedia.org" -s --category reviews --channel movie --report-folder ./reports/reviews_movie
+#ruby ./lib/json_test.rb  -h "http://qa.commonsensemedia.org/" -s --category reviews --channel game --report-folder ./reports/reviews_game
 #ruby ./lib/json_test.rb -s --category reviews --channel app --report-folder ./reports/reviews_app
 #ruby ./lib/json_test.rb -s --category reviews --channel website --report-folder ./reports/reviews_website
 #ruby ./lib/json_test.rb -s --category reviews --channel tv --report-folder ./reports/reviews_tv
