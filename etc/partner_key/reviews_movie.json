@@ -400,30 +400,38 @@
                                 "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
                             },
 
-                            "thumbnail": {
-                                "type": "object",
-                                "properties": {
-                                    "small": {
-                                        "type": "string",
-                                        "minLength": 2
-                                    },
-
-                                    "large": {
-                                        "small": "string",
-                                        "minLength": 2
-                                    }
-                                },
-                                "required": ["small", "large"],
-                                "additionalProperties": false
+                            "lang": {
+                                "type": {
+                                    "enum": [
+                                        "en",
+                                        "es"
+                                    ]
+                                }
                             }
                         },
-                        "required": ["type", "uri"],
+                        "required": ["type", "uri", "lang"],
                         "additionalProperties": false
                     },
                     "minItems": 1,
                     "uniqueItems": true
                 },
-                "required": ["files"],
+                "thumbnail": {
+                    "type": "object",
+                    "properties": {
+                        "small": {
+                            "type": "string",
+                            "minLength": 2
+                        },
+
+                        "large": {
+                            "small": "string",
+                            "minLength": 2
+                        }
+                    },
+                    "required": ["small", "large"],
+                    "additionalProperties": false
+                },
+                "required": ["files", "thumbnail"],
                 "additionalProperties": false
             }
         },
