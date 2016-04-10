@@ -114,9 +114,9 @@ class JsonValidator
       verbose_message("Parsing json schema...") if @verbose
 
       if @test_parameters[:channel].nil?
-        json_schema_name = "#{@test_parameters[:test_schema_folder]}/#{@test_parameters[:category]}.json"
+        json_schema_name = "#{@test_parameters[:test_schema_folder]}/#{@test_parameters[:key_type]}_key/#{@test_parameters[:category]}.json"
       else
-        json_schema_name = "#{@test_parameters[:test_schema_folder]}/#{@test_parameters[:category]}_#{@test_parameters[:channel]}.json"
+        json_schema_name = "#{@test_parameters[:test_schema_folder]}/#{@test_parameters[:key_type]}_key/#{@test_parameters[:category]}_#{@test_parameters[:channel]}.json"
       end
 
       json_file = File.open(json_schema_name).read
@@ -192,6 +192,7 @@ if (__FILE__ == $0)
   default_hostname = "api.commonsensemedia.org"
   default_method = "browse"
   default_key = "fd4b46050e5eea76085349c6458e149d"
+  default_key_type = "testing"
   default_limit = nil
 
 
@@ -211,6 +212,7 @@ Where options are:
   opt :hostname, "The hostname of the test environment", :short => "-h", :type => :string, :default => default_hostname
   opt :method, "Test API method", :short => "-m", :type => :string, :default => default_method
   opt :key, "Test API key", :short => "-k", :type => :string, :default => default_key
+  opt :key_type, "Test API key type", :short => "-t", :type => :string, :default => default_key_type
   opt :limit, "Number of feeds which will be tested", :short => "-l", :type => :string, :default => default_limit
   opt :dryrun, "Test script using local test.json file", :short => "-d", :type => :boolean, :default => false
   opt :verbose, "Verbose mode", :short => "-v", :type => :boolean, :default => true
@@ -225,9 +227,9 @@ Where options are:
 
   if opts[:category] == "reviews"
     Trollop::die :channel, "Test API channel missed or incorrect!" unless (channels.include?(opts[:channel].chomp))
-    Trollop::die :test_schema_folder, "Test schema folder or file incorrect!" unless (File.exists?("#{opts[:test_schema_folder]}/#{opts[:category]}_#{opts[:channel]}.json"))
+    Trollop::die :test_schema_folder, "Test schema folder or file incorrect!" unless (File.exists?("#{opts[:test_schema_folder]}/#{opts[:key_type]}_key/#{opts[:category]}_#{opts[:channel]}.json"))
   else
-    Trollop::die :test_schema_folder, "Test schema folder or file incorrect!" unless (File.exists?("#{opts[:test_schema_folder]}/#{opts[:category]}.json"))
+    Trollop::die :test_schema_folder, "Test schema folder or file incorrect!" unless (File.exists?("#{opts[:test_schema_folder]}/#{opts[:key_type]}_key/#{opts[:category]}.json"))
   end
 
   # Check if report_folder exist, if not create it

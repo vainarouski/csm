@@ -1,0 +1,647 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+
+     "alternatives": {
+       "type": "array",
+       "items": {
+         "type": "object",
+         "properties": {
+
+           "title": {
+             "type": "string",
+             "minLength": 2
+           },
+
+           "id": {
+             "type": "integer"
+           },
+
+           "url": {
+             "url": "string",
+             "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+           }
+         },
+
+         "required": [ "title", "id", "url" ],
+         "additionalProperties": false
+       },
+       "minItems": 1,
+       "maxItems": 10,
+       "uniqueItems": true
+     },
+
+     "anyGood": {
+       "type": "string",
+       "minLength": 2
+     },
+
+     "comingSoon": { "type": "boolean" },
+
+     "contentGrid": {
+       "patternProperties": {
+        "^[a-z]+$": {
+          "properties": {
+
+            "rating": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 5
+            },
+
+            "text": {
+              "type": "string",
+              "minLength": 2
+            },
+
+            "label": {
+              "type": "string",
+              "minLength": 2
+            }
+          },
+
+          "required": [ "rating", "text", "label" ],
+          "additionalProperties": false
+        },
+         "uniqueItems": true
+       }
+     },
+
+     "description": {
+       "type": "string",
+       "minLength": 2
+     },
+
+     "oneLiner": {
+       "type": "string",
+       "minLength": 2
+     },
+
+     "parentsNeedToKnow": {
+       "type": "string",
+       "minLength": 2
+     },
+
+     "product": {
+       "type": "object",
+       "properties": {
+
+         "id": { "type": "integer"},
+
+         "references": {
+           "type": "array",
+           "items": {
+             "type": "object",
+             "properties": {
+
+               "type": {
+                 "enum": ["upc", "netflix", "itunes", "googleplay", "asinproduct", "asinstream", "tms"]
+               },
+
+               "value": {
+                 "type": "string",
+                 "pattern": "^[0-9a-zA-Z]+$"
+               }
+             },
+
+             "required": [ "type", "value"],
+             "additionalProperties": false
+           },
+
+           "minItems": 1,
+           "uniqueItems": true
+         },
+
+         "genres": {
+           "type": "object",
+           "patternProperties": {
+             "^[0-9]+$": {
+               "type": "string",
+               "minLength": 2
+             }
+           },
+           "maxProperties": 5,
+           "uniqueItems": true
+         },
+
+         "images": {
+           "type": "array",
+           "items": {
+             "type": "object",
+             "properties": {
+
+               "type": {
+                 "enum": ["product", "screenshot"]
+               },
+
+               "url": {
+                 "type": "string",
+                 "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+               }
+             },
+
+             "required": [ "type", "url"],
+             "additionalProperties": false
+           },
+
+           "minItems": 1,
+           "uniqueItems": true
+         },
+
+         "awards": {
+           "patternProperties": {
+             "^[0-9]+$": {
+               "type": "string",
+               "minLength": 2
+             }
+           }
+         },
+
+         "releaseDate": { "type": "integer" },
+
+         "parentalAdvisory": { "type": "boolean" },
+
+
+         "labels": {
+           "type": "object",
+           "patternProperties": {
+             "^[0-9]+$": {
+               "type": "string",
+               "minLength": 2
+             }
+           },
+           "uniqueItems": true
+         },
+
+         "editedVersionAvailable": { "type": "boolean" },
+
+         "artists": {
+           "type": "object",
+           "patternProperties": {
+             "^[0-9]+$": {
+               "type": "string",
+               "minLength": 2
+             }
+           },
+           "maxProperties": 5,
+           "uniqueItems": true
+         },
+
+         "albumType": {
+           "enum": [null, "single", "album"]
+         }
+       },
+
+       "required": [ "id", "references", "genres", "images", "awards", "releaseDate", "parentalAdvisory", "labels", "editedVersionAvailable", "artists", "albumType"],
+       "additionalProperties": false
+     },
+
+    "slider": {
+      "type": "object",
+      "properties": {
+
+        "status": {
+          "enum": ["on", "off", "pause", "nfk"]
+        },
+
+        "not_for_kids": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+
+        "text": {
+          "type": "string",
+          "minLength": 2
+        },
+
+        "off_age": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 17
+        },
+
+        "on_age": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 17
+        },
+
+        "target_age": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 17
+        }
+      },
+
+      "required": [ "status", "text", "off_age", "on_age", "target_age"],
+      "additionalProperties": false
+    },
+
+    "stars": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+
+    "talkingPoints": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 2
+
+      },
+
+      "minItems": 1,
+      "maxItems": 5,
+      "uniqueItems": true
+    },
+
+    "themes": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9]+$": {
+          "type": "string",
+          "minLength": 2
+        }
+      },
+      "minProperties": 1
+    },
+
+    "video": {
+      "type": "object",
+      "properties": {
+
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+
+              "type": {
+                "enum": [
+                  "flash",
+                  "html5",
+                  "mobile",
+                  "html5_ff",
+                  "mobile_ff"
+                ]
+              },
+
+              "uri": {
+                "type": "string",
+                "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+              },
+
+              "thumbnail": {
+                "type": "object",
+                "properties": {
+                  "small": {
+                    "type": "string",
+                    "minLength": 2
+                  },
+
+                  "large": {
+                    "small": "string",
+                    "minLength": 2
+                  }
+                },
+                "required": ["small", "large"],
+                "additionalProperties": false
+              }
+            },
+            "required": ["type", "uri", "thumbnail"],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "required": ["files"],
+        "additionalProperties": false
+      }
+    },
+
+    "stats": {
+      "type": "object",
+      "properties": {
+
+        "csm_rating": {
+          "type": "object",
+          "properties": {
+
+            "avg": {
+              "type": "object",
+              "properties": {
+
+                "adult": {
+                  "type": "string",
+                  "pattern": "^[\\-.0-9]+$"
+                },
+
+                "all": {
+                  "type": "string",
+                  "pattern": "^[\\-.0-9]+$"
+                },
+
+                "child": {
+                  "type": "string",
+                  "pattern": "^[\\-.0-9]+$"
+                },
+
+                "kid": {
+                  "type": "string",
+                  "pattern": "^[\\-.0-9]+$"
+                },
+
+                "teen": {
+                  "type": "string",
+                  "pattern": "^[\\-.0-9]+$"
+                }
+              },
+              "additionalProperties": false
+            },
+
+            "count": {
+              "type": "object",
+              "properties": {
+
+                "adult": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                },
+
+                "all": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                },
+
+                "child": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                },
+
+                "kid": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                },
+
+                "teen": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+
+          "required": ["avg", "count"],
+          "additionalProperties": false
+        },
+
+        "recommended_age": {
+          "type": "object",
+          "properties": {
+
+            "avg": {
+              "type": "object",
+              "properties": {
+
+                "adult": {
+                  "type": "string",
+                  "pattern": "^[\\-.0-9]+$"
+                },
+
+                "all": {
+                  "type": "string",
+                  "pattern": "^[\\-.0-9]+$"
+                },
+
+                "child": {
+                  "type": "string",
+                  "pattern": "^[\\-.0-9]+$"
+                },
+
+                "kid": {
+                  "type": "string",
+                  "pattern": "^[\\-.0-9]+$"
+                },
+
+                "teen": {
+                  "type": "string",
+                  "pattern": "^[\\-.0-9]+$"
+                }
+              },
+              "additionalProperties": false
+            },
+
+            "count": {
+              "type": "object",
+              "properties": {
+
+                "adult": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                },
+
+                "all": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                },
+
+                "child": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                },
+
+                "kid": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                },
+
+                "teen": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+
+          "required": ["avg", "count"],
+          "additionalProperties": false
+        },
+
+        "stars": {
+          "type": "object",
+          "properties": {
+
+            "avg": {
+              "type": "object",
+              "properties": {
+
+                "adult": {
+                  "type": "string",
+                  "pattern": "^[\\-.0-9]+$"
+                },
+
+                "all": {
+                  "type": "string",
+                  "pattern": "^[\\-.0-9]+$"
+                },
+
+                "child": {
+                  "type": "string",
+                  "pattern": "^[\\-.0-9]+$"
+                },
+
+                "kid": {
+                  "type": "string",
+                  "pattern": "^[\\-.0-9]+$"
+                },
+
+                "teen": {
+                  "type": "string",
+                  "pattern": "^[\\-.0-9]+$"
+                }
+              },
+              "additionalProperties": false
+            },
+
+            "count": {
+              "type": "object",
+              "properties": {
+
+                "adult": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                },
+
+                "all": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                },
+
+                "child": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                },
+
+                "kid": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                },
+
+                "teen": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+
+          "required": ["avg", "count"],
+          "additionalProperties": false
+        },
+
+        "user_review_count": {
+          "type": "object",
+          "properties": {
+
+            "count": {
+              "type": "object",
+              "properties": {
+
+                "adult": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                },
+
+                "all": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                },
+
+                "child": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                },
+
+                "kid": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                },
+
+                "teen": {
+                  "type": "string",
+                  "pattern": "^[\\-0-9]+$"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+
+          "required": ["count"],
+          "additionalProperties": false
+        }
+      },
+
+      "required": ["csm_rating", "recommended_age", "stars", "user_review_count"],
+      "additionalProperties": false
+    },
+
+    "author": {
+      "type": "string",
+      "minLength": 2
+    },
+
+    "created": {
+      "type": "integer"
+    },
+
+    "title": {
+      "type": "string",
+      "minLength": 2
+    },
+
+    "updated": {
+      "type": "integer"
+    },
+
+    "id": {
+      "type": "integer"
+    },
+
+    "url": {
+      "url": "string",
+      "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+    },
+
+    "channel": {
+      "enum": ["movie", "game", "tv", "app", "music", "book", "website"]
+    }
+  },
+  "required": [
+    "alternatives",
+    "anyGood",
+    "comingSoon",
+    "contentGrid",
+    "description",
+    "oneLiner",
+    "parentsNeedToKnow",
+    "product",
+    "slider",
+    "stars",
+    "talkingPoints",
+    "themes",
+    "author",
+    "created",
+    "title",
+    "updated",
+    "id",
+    "url",
+    "channel"
+  ],
+  "additionalProperties": false
+}

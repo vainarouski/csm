@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+
+    "content": {
+      "type": "string",
+      "minLength": 2
+    },
+
+    "channel": {
+      "type": "array",
+      "items": {
+        "enum": ["movie", "game", "tv", "app", "music", "book", "website"]
+      },
+      "minItems": 1,
+      "maxItems": 1
+    },
+
+    "summary": {
+      "type": "string",
+      "minLength": 2
+    },
+
+    "url": {
+      "url": "string",
+      "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+    },
+
+    "id": {
+      "type": "integer"
+    },
+
+    "updated": {
+      "type": "integer"
+    },
+
+    "title": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 255
+    },
+
+    "created": {
+      "type": "integer"
+    },
+
+    "author": {
+      "type": "string",
+      "minLength": 2
+    },
+
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 2
+      },
+      "minItems": 1
+    },
+
+    "tags": {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9]+$": {
+          "type": "string",
+          "minLength": 2
+        }
+      },
+      "uniqueItems": true
+    },
+
+    "related": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+
+          "title": {
+            "type": "string",
+            "minLength": 2
+          },
+
+          "id": {
+            "type": "integer"
+          },
+
+          "url": {
+            "url": "string",
+            "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+          },
+
+          "summary": {
+            "type": "string",
+            "minLength": 2
+          }
+        },
+
+        "required": [ "title", "id"],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 3,
+      "uniqueItems": true
+    },
+
+
+
+    "ages": {
+      "type": "object",
+      "properties": {
+        "min":{
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 17
+        },
+        "max": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 17
+        }
+      },
+      "required": [ "min", "max"],
+      "additionalProperties": false
+    }
+  },
+
+  "required": [
+    "content",
+    "channel",
+    "summary",
+    "url",
+    "id",
+    "updated",
+    "title",
+    "created",
+    "author",
+    "topics",
+    "thumbnail",
+    "tags",
+    "related",
+    "ages"
+  ],
+  "additionalProperties": false
+}
