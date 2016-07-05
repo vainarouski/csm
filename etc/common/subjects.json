@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "patternProperties": {
+    "^[0-9]+$": {
+
+      "name": { "$ref": "name.json" },
+
+      "terms": { "$ref": "terms.json" }
+    }
+  },
+
+  "uniqueItems": true
+}

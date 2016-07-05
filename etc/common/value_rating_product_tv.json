@@ -1,0 +1,3 @@
+{
+  "enum": ["NR", "TV-G", "TV-Y", "TV-Y7", "TV-Y7-FV", "TV-PG", "TV-14", "TV-MA"]
+}

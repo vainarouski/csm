@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "properties": {
+
+    "id": { "$ref": "id.json" },
+
+    "uuid": { "$ref": "uuid.json" },
+
+    "references": { "$ref": "references.json" },
+
+    "genres": { "$ref": "genres.json" },
+
+    "images": { "$ref": "images.json" },
+
+    "awards": { "$ref": "awards.json" },
+
+    "rating": { "$ref": "rating_product_tv.json" },
+
+    "platforms": { "$ref": "platforms_product_app.json" },
+
+    "trailer": { "$ref": "trailer.json" },
+
+    "networks": { "$ref": "networks.json" },
+
+    "cast": { "$ref": "cast.json" }
+  },
+
+  "required": [
+    "id",
+    "uuid",
+    "references",
+    "genres",
+    "images",
+    "awards",
+    "rating",
+    "platforms",
+    "trailer",
+    "networks",
+    "cast"],
+
+  "additionalProperties": false
+}

@@ -1,0 +1,26 @@
+{
+  "anyOf": [
+
+    {
+      "type": "object",
+      "properties": {
+
+        "id": { "$ref": "id.json" },
+
+        "thumbnail": { "$ref": "url.json" },
+
+        "expires": { "$ref": "expires.json" }
+      },
+
+      "required": [
+        "id",
+        "thumbnail",
+        "expires"
+      ],
+
+      "additionalProperties": false
+    },
+
+    { "type": "null" }
+  ]
+}

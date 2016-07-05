@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+
+    "cast": { "$ref": "cast.json" },
+
+    "directors": { "$ref": "directors.json" },
+
+    "genres": { "$ref": "genres.json" },
+
+    "length": { "$ref": "length.json" },
+
+    "studios": { "$ref": "studios.json" },
+
+    "rating": { "$ref": "rating_product_movie.json" },
+
+    "releaseDates": { "$ref": "releaseDates.json" },
+
+    "trailer": { "$ref": "trailer.json" },
+
+    "awards": { "$ref": "awards.json" },
+
+    "uuid": { "$ref": "uuid.json" },
+
+    "images": { "$ref": "images.json" },
+
+    "references": { "$ref": "references.json" },
+
+    "id": { "$ref": "id.json" }
+  },
+
+  "required": [
+    "cast",
+    "directors",
+    "genres",
+    "length",
+    "studios",
+    "rating",
+    "releaseDates",
+    "trailer",
+    "awards",
+    "uuid",
+    "images",
+    "references",
+    "id"
+  ],
+
+  "additionalProperties": false
+}

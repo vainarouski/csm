@@ -13,6 +13,7 @@
 # --limit or -l - Number of feeds which will be tested, default value: nil
 # --dryrun or -d - Test script using local test.json file, default value: false
 # --secured or -s Use secured URL, default => false
+# --key_type or -t Test API key type, possible values: testing or partner, default: testing
 #
 # required for all:
 #  --category or -c - Test API category
@@ -23,7 +24,7 @@
 #To install all necessary gems, uncomment bundle install
 # bundle install
 #
-ruby ./lib/json_test.rb -h "api-qa.commonsense.org" -k "404da1a207199d7ed5d9f0d887827982" --category reviews -l 10 --channel movie --report-folder ./reports/reviews_movie
+ruby ./lib/json_test.rb -h "api-qa.commonsense.org" -k "7252825a845075374ba0005595706587" -t partner --category reviews --channel app -l 100 --report-folder ./reports/reviews_movie
 #ruby ./lib/json_test.rb  -h "qa.commonsensemedia.org" -s --category reviews --channel game --report-folder ./reports/reviews_game
 #ruby ./lib/json_test.rb -h "qa.commonsensemedia.org" -s --category reviews --channel app --report-folder ./reports/reviews_app
 #ruby ./lib/json_test.rb -h "qa.commonsensemedia.org" -s --category reviews --channel website --report-folder ./reports/reviews_website

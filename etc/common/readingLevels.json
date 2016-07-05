@@ -1,0 +1,26 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+
+      "type": { "$ref": "type_readingLevel_product.json" },
+
+      "from": { "$ref": "from.json" },
+
+      "to": { "$ref": "to.json" }
+    },
+
+    "required": [
+      "type",
+      "from",
+      "to"
+    ],
+
+    "additionalProperties": false
+  },
+
+  "minItems": 1,
+  "maxItems": 3,
+  "uniqueItems": true
+}

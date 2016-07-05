@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+
+    "type":{ "$ref": "type_rating_platforms_product.json" },
+
+    "value": { "$ref": "value_rating_platforms_product.json" },
+
+    "explanation": { "$ref": "explanation.json" }
+  },
+
+  "required": [
+    "type",
+    "value",
+    "explanation"
+  ],
+
+  "additionalProperties": false
+}

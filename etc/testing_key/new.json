@@ -3,126 +3,35 @@
   "type": "object",
   "properties": {
 
-    "content": {
-      "type": "string",
-      "minLength": 2
-    },
+    "content": { "$ref": "etc/common/content.json" },
 
-    "channel": {
-      "type": "array",
-      "items": {
-        "enum": ["movie", "game", "tv", "app", "music", "book", "website"]
-      },
-      "minItems": 1,
-      "maxItems": 1
-    },
+    "channel": { "$ref": "etc/common/channel_new.json" },
 
-    "summary": {
-      "type": "string",
-      "minLength": 2
-    },
+    "summary": { "$ref": "etc/common/summary.json" },
 
-    "url": {
-      "url": "string",
-      "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
-    },
+    "url": { "$ref": "etc/common/url.json" },
 
-    "id": {
-      "type": "integer"
-    },
+    "id": { "$ref": "etc/common/id.json" },
 
-    "updated": {
-      "type": "integer"
-    },
+    "uuid": { "$ref": "etc/common/uuid.json" },
 
-    "title": {
-      "type": "string",
-      "minLength": 2,
-      "maxLength": 255
-    },
+    "updated": { "$ref": "etc/common/updated.json" },
 
-    "created": {
-      "type": "integer"
-    },
+    "excludeDistribution": { "$ref": "etc/common/excludeDistribution.json" },
 
-    "author": {
-      "type": "string",
-      "minLength": 2
-    },
+    "title": { "$ref": "etc/common/title.json" },
 
-    "topics": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "minLength": 2
-      },
-      "minItems": 1
-    },
+    "created": { "$ref": "etc/common/created.json" },
 
-    "tags": {
-      "type": "object",
-      "patternProperties": {
-        "^[0-9]+$": {
-          "type": "string",
-          "minLength": 2
-        }
-      },
-      "uniqueItems": true
-    },
+    "author": { "$ref": "etc/common/author.json" },
 
-    "related": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
+    "topics": { "$ref": "etc/common/topics.json" },
 
-          "title": {
-            "type": "string",
-            "minLength": 2
-          },
+    "tags": { "$ref": "etc/common/tags.json" },
 
-          "id": {
-            "type": "integer"
-          },
+    "related": { "$ref": "etc/common/related.json" },
 
-          "url": {
-            "url": "string",
-            "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
-          },
-
-          "summary": {
-            "type": "string",
-            "minLength": 2
-          }
-        },
-
-        "required": [ "title", "id"],
-        "additionalProperties": false
-      },
-      "minItems": 1,
-      "maxItems": 3,
-      "uniqueItems": true
-    },
-
-
-
-    "ages": {
-      "type": "object",
-      "properties": {
-        "min":{
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 17
-        },
-        "max": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 17
-        }
-      },
-      "required": [ "min", "max"],
-      "additionalProperties": false
-    }
+    "ages": { "$ref": "etc/common/ages.json" }
   },
 
   "required": [
@@ -131,12 +40,13 @@
     "summary",
     "url",
     "id",
+    "uuid",
     "updated",
+    "excludeDistribution",
     "title",
     "created",
     "author",
     "topics",
-    "thumbnail",
     "tags",
     "related",
     "ages"

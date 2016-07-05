@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+
+    "status": { "$ref": "status.json" },
+
+    "not_for_kids": { "$ref": "notForKids.json" },
+
+    "text": { "$ref": "text.json" },
+
+    "off_age": { "$ref": "offAge.json" },
+
+    "on_age": { "$ref": "onAge.json" },
+
+    "target_age": { "$ref": "targetAge.json" }
+  },
+
+  "additionalProperties": false
+}

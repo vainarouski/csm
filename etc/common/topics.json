@@ -1,0 +1,15 @@
+{
+  "anyOf": [
+
+    {
+      "type": "object",
+      "properties": {
+        "type": "string",
+        "minLength": 2
+      }
+    },
+
+    { "type": "array" }
+  ]
+}
+

@@ -1,0 +1,65 @@
+{
+  "type": "object",
+  "properties": {
+
+    "id": { "$ref": "id.json" },
+
+    "references": { "$ref": "references.json" },
+
+    "genres": { "$ref": "genres.json" },
+
+    "images": { "$ref": "images.json" },
+
+    "awards": { "$ref": "awards.json" },
+
+    "version": { "$ref": "version.json" },
+
+    "size": { "$ref": "size.json" },
+
+    "requirements": { "$ref": "requirements.json" },
+
+    "releaseDate": { "$ref": "releaseDate.json" },
+
+    "developers": { "$ref": "developers.json" },
+
+    "priceStructure": { "$ref": "priceStructure.json" },
+
+    "prices": { "$ref": "prices.json" },
+
+    "uuid": { "$ref": "uuid.json" },
+
+    "assistive": { "$ref": "assistive.json" },
+
+    "assistiveAlt": { "$ref": "assistiveAlt.json" },
+
+    "specialNeeds": { "$ref": "specialNeeds.json" },
+
+    "specialNeedsAlt": { "$ref": "specialNeedsAlt.json" },
+
+    "platforms": { "$ref": "platforms_product_app.json" }
+
+  },
+
+  "required": [
+    "id",
+    "references",
+    "genres",
+    "images",
+    "awards",
+    "version",
+    "size",
+    "requirements",
+    "releaseDate",
+    "developers",
+    "priceStructure",
+    "prices",
+    "uuid",
+    "assistive",
+    "assistiveAlt",
+    "specialNeeds",
+    "specialNeedsAlt",
+    "platforms"
+  ],
+
+  "additionalProperties": false
+}

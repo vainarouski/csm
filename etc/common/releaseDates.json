@@ -1,0 +1,22 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+
+      "type": { "$ref": "type_realeaseDates_product.json" },
+
+      "date": { "$ref": "date.json" }
+    },
+
+    "required": [
+      "type",
+      "date"
+    ],
+
+    "additionalProperties": false
+  },
+
+  "minItems": 1,
+  "uniqueItems": true
+}

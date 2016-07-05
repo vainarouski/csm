@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "properties": {
+
+    "adult": { "$ref": "adult.json" },
+
+    "all": { "$ref": "all.json" },
+
+    "child": { "$ref": "child.json" },
+
+    "kid": { "$ref": "kid.json" },
+
+    "teen": { "$ref": "teen.json" }
+  },
+
+  "additionalProperties": false
+}

@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "properties": {
+
+    "small": { "$ref": "small.json" },
+
+    "large": { "$ref": "large.json" }
+  },
+
+  "required": ["small", "large"],
+  "additionalProperties": false
+}

@@ -88,20 +88,31 @@ class JsonValidator
 
       errors.each do |error|
         /The property \'(.+?)\' (.+?) in/.match error
-        error_message = {}
-        error_message[:property] = Regexp.last_match[1]
-        error_message[:message] = Regexp.last_match[2]
-        error_messages << error_message
-      end
 
+        element_with_error = Regexp.last_match[1]
+        element_error_message = Regexp.last_match[2]
+
+        if test_report[element_with_error].nil?
+          test_report[element_with_error] = {}
+          test_report[element_with_error][element_error_message] = []
+          test_report[element_with_error][element_error_message] << feed["id"]
+        else
+          if test_report[element_with_error][element_error_message].nil?
+            test_report[element_with_error][element_error_message] = []
+            test_report[element_with_error][element_error_message] << feed["id"]
+          else
+            test_report[element_with_error][element_error_message] << feed["id"]
+          end
+        end
+      end
 
       print "\r#{index}" if @verbose
 
       index += 1
 
-      test_report[feed["id"]] = error_messages
     end
 
+    test_report[:number_of_tested_items] = index
     verbose_message("") if @verbose
 
     test_reporter(test_report)

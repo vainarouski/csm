@@ -3,195 +3,43 @@
   "type": "object",
   "properties": {
 
-    "channel": {
-      "type": "array",
-      "items": {
-        "enum": ["movie", "game", "tv", "app", "music", "book", "website"]
-        },
-      "minItems": 1,
-      "maxItems": 1
-      },
+    "channel": { "$ref": "etc/common/channel_new.json" },
 
-    "summary": {
-      "type": "string",
-      "minLength": 2
-    },
+    "summary": { "$ref": "etc/common/summary.json" },
 
-    "url": {
-      "url": "string",
-      "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
-    },
+    "url": { "$ref": "etc/common/url.json" },
 
-    "id": {
-      "type": "integer"
-    },
+    "id": { "$ref": "etc/common/id.json" },
 
-    "updated": {
-      "type": "integer"
-    },
+    "uuid": { "$ref": "etc/common/uuid.json" },
 
-    "title": {
-      "type": "string",
-      "minLength": 2,
-      "maxLength": 255
-    },
+    "updated": { "$ref": "etc/common/updated.json" },
 
-    "created": {
-      "type": "integer"
-    },
+    "title": { "$ref": "etc/common/title.json" },
 
-    "author": {
-      "enum": ["Common Sense Media"]
-    },
+    "created": { "$ref": "etc/common/created.json" },
 
-    "reviews": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
+    "author": { "$ref": "etc/common/author.json" },
 
-          "title": {
-            "type": "string",
-            "minLength": 2
-          },
+    "reviews": { "$ref": "etc/common/reviews.json" },
 
-          "slider": {
-            "type": "object",
-            "properties": {
+    "otherPicks": { "$ref": "etc/common/otherPicks.json" },
 
-              "status": {
-                "enum": ["on", "off", "pause", "nfk"]
-              },
+    "intro": { "$ref": "etc/common/categories.json" },
 
-              "not_for_kids": {
-                "type": "integer",
-                "minimum": 0,
-                "maximum": 1
-              },
+    "categories": { "$ref": "etc/common/categories.json" },
 
-              "text": {
-                "type": "string",
-                "minLength": 2
-              },
-
-              "off_age": {
-                "type": "integer",
-                "minimum": 2,
-                "maximum": 17
-              },
-
-              "on_age": {
-                "type": "integer",
-                "minimum": 2,
-                "maximum": 17
-              },
-
-              "target_age": {
-                "type": "integer",
-                "minimum": 2,
-                "maximum": 17
-              }
-            },
-
-            "required": [ "status", "text", "off_age", "on_age", "target_age"],
-            "additionalProperties": false
-          },
-
-          "id": {
-            "type": "integer"
-          },
-
-          "url": {
-            "url": "string",
-            "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
-          },
-
-          "summary": {
-            "type": "string",
-            "minLength": 2
-          }
-        },
-
-        "required": [ "title", "id"],
-        "additionalProperties": false
-      },
-      "minItems": 1,
-      "uniqueItems": true
-    },
-
-
-    "otherPicks": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-
-          "title": {
-            "type": "string",
-            "minLength": 2
-          },
-
-          "id": {
-            "type": "integer"
-          },
-
-          "url": {
-            "url": "string",
-            "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
-          },
-
-          "summary": {
-            "type": "string",
-            "minLength": 2
-          }
-        },
-
-        "required": [ "title", "id"],
-        "additionalProperties": false
-      },
-      "minItems": 1,
-      "uniqueItems": true
-    },
-
-    "intro": {
-      "type": "string",
-      "minLength": 2
-    },
-
-
-    "categories": {
-      "type": "object",
-      "patternProperties": {
-        "^[0-9]+$": {
-          "enum": ["Movies", "Games", "TV", "Apps", "Musics", "Books", "Websites"]
-        }
-      }
-    },
-
-    "ages": {
-      "type": "object",
-      "properties": {
-        "min":{
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 17
-        },
-        "max": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 17
-        }
-      },
-      "required": [ "min", "max"],
-      "additionalProperties": false
-    }
+    "ages": { "$ref": "etc/common/ages.json" }
   },
+
   "required": [
     "channel",
     "summary",
     "url",
     "id",
+    "uuid",
     "updated",
+    "excludeDistribution",
     "title",
     "created",
     "author",
@@ -201,5 +49,6 @@
     "categories",
     "ages"
   ],
+
   "additionalProperties": false
 }

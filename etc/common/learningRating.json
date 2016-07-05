@@ -1,0 +1,41 @@
+{
+  "anyOf": [
+
+    {
+      "type": "object",
+      "properties": {
+
+        "author": { "$ref": "author.json" },
+
+        "dimensions": { "$ref": "dimensions.json" },
+
+        "whatKidsCanLearn": { "$ref": "whatKidsCanLearn.json" },
+
+        "rating": { "$ref": "rating_learningRating.json" },
+
+        "howParentsCanHelp": { "$ref": "howParentsCanHelp.json" },
+
+        "educationalIntent": { "$ref": "educationalIntent.json" },
+
+        "subjects": { "$ref": "subjects.json" },
+
+        "skills": { "$ref": "skills.json" },
+
+        "required": [
+          "author",
+          "dimensions",
+          "whatKidsCanLearn",
+          "rating",
+          "howParentsCanHelp",
+          "educationalIntent",
+          "subjects",
+          "skills"
+        ],
+
+        "additionalProperties": false
+      }
+    },
+
+    { "type": "null" }
+  ]
+}

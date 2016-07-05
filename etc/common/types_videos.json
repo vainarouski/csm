@@ -1,0 +1,6 @@
+{
+  "type": "array",
+  "items": {
+    "enum": ["review", "tip", "advice", "spanish", "educator"]
+  }
+}

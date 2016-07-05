@@ -1,0 +1,29 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+
+      "title": {
+        "type": "string",
+        "minLength": 2
+      },
+
+      "author": { "$ref": "etc/common/slider.json" },
+
+      "id": { "$ref": "etc/common/id.json" },
+
+      "uuid": { "$ref": "etc/common/uuid.json" },
+
+      "url": { "$ref": "etc/common/url.json" },
+
+      "summary": { "$ref": "etc/common/summary.json" }
+    },
+
+    "required": [ "title", "id", "uuid"],
+    "additionalProperties": false
+  },
+
+  "minItems": 1,
+  "uniqueItems": true
+}

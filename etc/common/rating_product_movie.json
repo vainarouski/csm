@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "properties": {
+
+    "type":{ "$ref": "type_rating_product_movie.json" },
+
+    "value": { "$ref": "value_rating_product_movie.json" },
+
+    "explanation": { "$ref": "explanation.json" },
+
+    "text": { "$ref": "text.json" }
+  },
+
+  "required": [
+    "type",
+    "value",
+    "explanation",
+    "text"
+  ],
+
+  "additionalProperties": false
+}

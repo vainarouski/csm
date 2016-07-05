@@ -1,0 +1,3 @@
+{
+  "enum": ["publisher", "read_aloud", "read_alone"]
+}

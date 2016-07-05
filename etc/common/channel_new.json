@@ -1,0 +1,14 @@
+{
+  "type": "array",
+  "items": {
+    "enum": [
+      "movie",
+      "game",
+      "tv",
+      "app",
+      "music",
+      "book",
+      "website"
+    ]
+  }
+}

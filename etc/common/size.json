@@ -1,0 +1,11 @@
+{
+  "properties": {
+
+    "units": { "$ref": "units_size_product.json" },
+
+    "value": { "$ref": "value_size_product.json" }
+  },
+
+  "required": ["units", "value"],
+  "additionalProperties": false
+}

@@ -1,0 +1,21 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+
+      "type": { "$ref": "type_images_product.json" },
+
+      "url": { "$ref": "url.json" }
+    },
+
+    "required": [
+      "type",
+      "url"
+    ],
+
+    "additionalProperties": false
+  },
+
+  "uniqueItems": true
+}

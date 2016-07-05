@@ -1,0 +1,3 @@
+{
+  "enum": ["upc", "netflix", "itunes", "googleplay", "asinproduct", "asinstream", "tms", "isbn", "seeit"]
+}

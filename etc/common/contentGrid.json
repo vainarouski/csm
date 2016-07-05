@@ -1,0 +1,19 @@
+{
+  "patternProperties": {
+    "^[a-z]+$": {
+      "properties": {
+
+        "rating": { "$ref": "rating_contentGrid.json" },
+
+        "text": { "$ref": "text.json" },
+
+        "label": { "$ref": "label.json" }
+      },
+
+      "required": [ "rating", "text", "label" ],
+      "additionalProperties": false
+    },
+
+    "uniqueItems": true
+  }
+}

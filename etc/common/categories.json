@@ -1,0 +1,8 @@
+{
+  "type": "object",
+  "patternProperties": {
+    "^[0-9]+$": {
+      "enum": ["Movies", "Games", "TV", "Apps", "Musics", "Books", "Websites"]
+    }
+  }
+}

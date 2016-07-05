@@ -1,0 +1,32 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+
+      "title": {
+        "type": "string",
+        "minLength": 2
+      },
+
+      "id": {
+        "type": "integer"
+      },
+
+      "url": {
+        "url": "string",
+        "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
+      },
+
+      "summary": {
+        "type": "string",
+        "minLength": 2
+      }
+    },
+
+    "required": [ "title", "id"],
+    "additionalProperties": false
+  },
+  "minItems": 1,
+  "uniqueItems": true
+}

@@ -1,0 +1,8 @@
+{
+  "enum": [
+    "on",
+    "off",
+    "pause",
+    "nfk"
+  ]
+}

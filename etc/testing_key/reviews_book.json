@@ -3,683 +3,63 @@
   "type": "object",
   "properties": {
 
-     "alternatives": {
-       "type": "array",
-       "items": {
-         "type": "object",
-         "properties": {
+    "alternatives": { "$ref": "etc/common/alternatives.json"},
 
-           "title": {
-             "type": "string",
-             "minLength": 2
-           },
+    "ageRating": { "$ref": "etc/common/ageRating.json"},
 
-           "id": {
-             "type": "integer"
-           },
+    "anyGood": { "$ref": "etc/common/anyGood.json" },
 
-           "url": {
-             "url": "string",
-             "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
-           }
-         },
+    "comingSoon": { "$ref": "etc/common/comingSoon.json" },
 
-         "required": [ "title", "id", "url" ],
-         "additionalProperties": false
-       },
-       "minItems": 1,
-       "maxItems": 10,
-       "uniqueItems": true
-     },
+    "contentGrid": { "$ref": "etc/common/contentGrid.json" },
 
-     "anyGood": {
-       "type": "string",
-       "minLength": 2
-     },
+    "description": { "$ref": "etc/common/description.json" },
 
-     "comingSoon": { "type": "boolean" },
+    "oneLiner": { "$ref": "etc/common/oneLiner.json" },
 
-     "contentGrid": {
-       "patternProperties": {
-        "^[a-z]+$": {
-          "properties": {
+    "parentsNeedToKnow": { "$ref": "etc/common/parentsNeedToKnow.json" },
 
-            "rating": {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 5
-            },
+    "product": { "$ref": "etc/common/product_book.json" },
 
-            "text": {
-              "type": "string",
-              "minLength": 2
-            },
+    "tags": { "$ref": "etc/common/tags.json" },
 
-            "label": {
-              "type": "string",
-              "minLength": 2
-            }
-          },
+    "slider": { "$ref": "etc/common/slider.json" },
 
-          "required": [ "rating", "text", "label" ],
-          "additionalProperties": false
-        },
-         "uniqueItems": true
-       }
-     },
+    "characterStrengths": { "$ref": "etc/common/characterStrengths.json" },
 
-     "description": {
-       "type": "string",
-       "minLength": 2
-     },
+    "stars": { "$ref": "etc/common/stars_root.json" },
 
-     "oneLiner": {
-       "type": "string",
-       "minLength": 2
-     },
+    "talkingPoints": { "$ref": "etc/common/talkingPoints.json" },
 
-     "parentsNeedToKnow": {
-       "type": "string",
-       "minLength": 2
-     },
+    "themes": { "$ref": "etc/common/themes.json" },
 
-     "product": {
-       "type": "object",
-       "properties": {
+    "video": { "$ref": "etc/common/video.json" },
 
-         "id": { "type": "integer"},
+    "stats": { "$ref": "etc/common/stats.json" },
 
-         "references": {
-           "type": "array",
-           "items": {
-             "type": "object",
-             "properties": {
+    "author": { "$ref": "etc/common/author.json" },
 
-               "type": {
-                 "enum": ["upc", "netflix", "itunes", "googleplay", "asinproduct", "asinstream", "tms"]
-               },
+    "created": { "$ref": "etc/common/created.json" },
 
-               "value": {
-                 "type": "string",
-                 "minLength": 2
+    "title": { "$ref": "etc/common/title.json" },
 
-               }
-             },
+    "updated": { "$ref": "etc/common/updated.json" },
 
-             "required": [ "type", "value"],
-             "additionalProperties": false
-           },
+    "excludeDistribution": { "$ref": "etc/common/excludeDistribution.json" },
 
-           "minItems": 1,
-           "uniqueItems": true
-         },
+    "id": { "$ref": "etc/common/id.json" },
 
-         "genres": {
-           "type": "object",
-           "patternProperties": {
-             "^[0-9]+$": {
-               "type": "string",
-               "minLength": 2
-             }
-           },
-           "maxProperties": 5,
-           "uniqueItems": true
-         },
+    "uuid": { "$ref": "etc/common/uuid.json" },
 
-         "images": {
-           "type": "array",
-           "items": {
-             "type": "object",
-             "properties": {
+    "url": { "$ref": "etc/common/url.json" },
 
-               "type": {
-                 "enum": ["product", "screenshot"]
-               },
+    "channel": { "$ref": "etc/common/channel_reviews.json"}
 
-               "url": {
-                 "type": "string",
-                 "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
-               }
-             },
-
-             "required": [ "type", "url"],
-             "additionalProperties": false
-           },
-
-           "minItems": 1,
-           "uniqueItems": true
-         },
-
-         "awards": {
-           "patternProperties": {
-             "^[0-9]+$": {
-               "type": "string",
-               "minLength": 2
-             }
-           }
-         },
-
-         "types": {
-           "patternProperties": {
-             "^[0-9]+$": {
-               "enum": ["Fiction", "Non-Fiction"]
-             }
-           }
-         },
-
-         "releaseDate": { "type": "integer" },
-
-
-         "readingLevels": {
-           "type": "array",
-           "items": {
-             "type": "object",
-             "properties": {
-
-               "type": {
-                 "enum": ["publisher", "read_aloud"]
-               },
-
-               "from": {
-                 "type": "integer",
-                 "minimum": 0,
-                 "maximum": 18
-               },
-
-               "to": {
-                 "type": "integer",
-                 "minimum": 0,
-                 "maximum": 18
-               }
-             },
-
-             "required": [ "type", "from", "to" ],
-             "additionalProperties": false
-           },
-           "minItems": 1,
-           "maxItems": 3,
-           "uniqueItems": true
-         },
-
-         "publishers": {
-           "patternProperties": {
-             "^[0-9]+$": {
-               "type": "string",
-               "minLength": 2
-             }
-           }
-         },
-
-         "pages": {
-           "type": "string",
-           "pattern": "^\\d+$"
-         },
-
-         "illustrators": {
-           "type": "object",
-           "patternProperties": {
-             "^[0-9]+$": {
-               "type": "string",
-               "minLength": 2
-             }
-           },
-           "maxProperties": 5,
-           "uniqueItems": true
-         },
-
-         "formats": {
-           "patternProperties": {
-             "^[0-9]+$": {
-               "type": "string",
-               "minLength": 2
-             }
-           }
-         },
-
-         "authors": {
-           "type": "object",
-           "patternProperties": {
-             "^[0-9]+$": {
-               "type": "string",
-               "minLength": 2
-             }
-           },
-           "maxProperties": 5,
-           "uniqueItems": true
-         }
-       },
-
-       "required": [ "id", "references", "genres", "images", "awards", "types", "releaseDate", "readingLevels", "publishers", "pages", "illustrators", "formats", "authors"],
-       "additionalProperties": false
-     },
-
-    "slider": {
-      "type": "object",
-      "properties": {
-
-        "status": {
-          "enum": ["on", "off", "pause", "nfk"]
-        },
-
-        "not_for_kids": {
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 1
-        },
-
-        "text": {
-          "type": "string",
-          "minLength": 2
-        },
-
-        "off_age": {
-          "type": "integer",
-          "minimum": 2,
-          "maximum": 17
-        },
-
-        "on_age": {
-          "type": "integer",
-          "minimum": 2,
-          "maximum": 17
-        },
-
-        "target_age": {
-          "type": "integer",
-          "minimum": 2,
-          "maximum": 17
-        }
-      },
-
-      "required": [ "status", "text", "off_age", "on_age", "target_age"],
-      "additionalProperties": false
-    },
-
-    "stars": {
-      "type": "integer",
-      "minimum": 1,
-      "maximum": 5
-    },
-
-    "talkingPoints": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "minLength": 2
-
-      },
-
-      "minItems": 1,
-      "maxItems": 5,
-      "uniqueItems": true
-    },
-
-    "themes": {
-      "type": "object",
-      "patternProperties": {
-        "^[0-9]+$": {
-          "type": "string",
-          "minLength": 2
-        }
-      },
-      "minProperties": 1
-    },
-
-    "video": {
-      "type": "object",
-      "properties": {
-
-        "files": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-
-              "type": {
-                "enum": [
-                  "flash",
-                  "html5",
-                  "mobile",
-                  "html5_ff",
-                  "mobile_ff"
-                ]
-              },
-
-              "uri": {
-                "type": "string",
-                "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
-              },
-
-              "thumbnail": {
-                "type": "object",
-                "properties": {
-                  "small": {
-                    "type": "string",
-                    "minLength": 2
-                  },
-
-                  "large": {
-                    "small": "string",
-                    "minLength": 2
-                  }
-                },
-                "required": ["small", "large"],
-                "additionalProperties": false
-              }
-            },
-            "required": ["type", "uri", "thumbnail"],
-            "additionalProperties": false
-          },
-          "minItems": 1,
-          "uniqueItems": true
-        },
-        "required": ["files"],
-        "additionalProperties": false
-      }
-    },
-
-    "stats": {
-      "type": "object",
-      "properties": {
-
-        "csm_rating": {
-          "type": "object",
-          "properties": {
-
-            "avg": {
-              "type": "object",
-              "properties": {
-
-                "adult": {
-                  "type": "string",
-                  "pattern": "^[\\-.0-9]+$"
-                },
-
-                "all": {
-                  "type": "string",
-                  "pattern": "^[\\-.0-9]+$"
-                },
-
-                "child": {
-                  "type": "string",
-                  "pattern": "^[\\-.0-9]+$"
-                },
-
-                "kid": {
-                  "type": "string",
-                  "pattern": "^[\\-.0-9]+$"
-                },
-
-                "teen": {
-                  "type": "string",
-                  "pattern": "^[\\-.0-9]+$"
-                }
-              },
-              "additionalProperties": false
-            },
-
-            "count": {
-              "type": "object",
-              "properties": {
-
-                "adult": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                },
-
-                "all": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                },
-
-                "child": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                },
-
-                "kid": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                },
-
-                "teen": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                }
-              },
-              "additionalProperties": false
-            }
-          },
-
-          "required": ["avg", "count"],
-          "additionalProperties": false
-        },
-
-        "recommended_age": {
-          "type": "object",
-          "properties": {
-
-            "avg": {
-              "type": "object",
-              "properties": {
-
-                "adult": {
-                  "type": "string",
-                  "pattern": "^[\\-.0-9]+$"
-                },
-
-                "all": {
-                  "type": "string",
-                  "pattern": "^[\\-.0-9]+$"
-                },
-
-                "child": {
-                  "type": "string",
-                  "pattern": "^[\\-.0-9]+$"
-                },
-
-                "kid": {
-                  "type": "string",
-                  "pattern": "^[\\-.0-9]+$"
-                },
-
-                "teen": {
-                  "type": "string",
-                  "pattern": "^[\\-.0-9]+$"
-                }
-              },
-              "additionalProperties": false
-            },
-
-            "count": {
-              "type": "object",
-              "properties": {
-
-                "adult": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                },
-
-                "all": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                },
-
-                "child": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                },
-
-                "kid": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                },
-
-                "teen": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                }
-              },
-              "additionalProperties": false
-            }
-          },
-
-          "required": ["avg", "count"],
-          "additionalProperties": false
-        },
-
-        "stars": {
-          "type": "object",
-          "properties": {
-
-            "avg": {
-              "type": "object",
-              "properties": {
-
-                "adult": {
-                  "type": "string",
-                  "pattern": "^[\\-.0-9]+$"
-                },
-
-                "all": {
-                  "type": "string",
-                  "pattern": "^[\\-.0-9]+$"
-                },
-
-                "child": {
-                  "type": "string",
-                  "pattern": "^[\\-.0-9]+$"
-                },
-
-                "kid": {
-                  "type": "string",
-                  "pattern": "^[\\-.0-9]+$"
-                },
-
-                "teen": {
-                  "type": "string",
-                  "pattern": "^[\\-.0-9]+$"
-                }
-              },
-              "additionalProperties": false
-            },
-
-            "count": {
-              "type": "object",
-              "properties": {
-
-                "adult": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                },
-
-                "all": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                },
-
-                "child": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                },
-
-                "kid": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                },
-
-                "teen": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                }
-              },
-              "additionalProperties": false
-            }
-          },
-
-          "required": ["avg", "count"],
-          "additionalProperties": false
-        },
-
-        "user_review_count": {
-          "type": "object",
-          "properties": {
-
-            "count": {
-              "type": "object",
-              "properties": {
-
-                "adult": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                },
-
-                "all": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                },
-
-                "child": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                },
-
-                "kid": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                },
-
-                "teen": {
-                  "type": "string",
-                  "pattern": "^[\\-0-9]+$"
-                }
-              },
-              "additionalProperties": false
-            }
-          },
-
-          "required": ["count"],
-          "additionalProperties": false
-        }
-      },
-
-      "required": ["csm_rating", "recommended_age", "stars", "user_review_count"],
-      "additionalProperties": false
-    },
-
-    "author": {
-      "type": "string",
-      "minLength": 2
-    },
-
-    "created": {
-      "type": "integer"
-    },
-
-    "title": {
-      "type": "string",
-      "minLength": 2
-    },
-
-    "updated": {
-      "type": "integer"
-    },
-
-    "id": {
-      "type": "integer"
-    },
-
-    "url": {
-      "url": "string",
-      "pattern": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
-    },
-
-    "channel": {
-      "enum": ["movie", "game", "tv", "app", "music", "book", "website"]
-    }
   },
+
   "required": [
     "alternatives",
+    "ageRating",
     "anyGood",
     "comingSoon",
     "contentGrid",
@@ -687,7 +67,9 @@
     "oneLiner",
     "parentsNeedToKnow",
     "product",
+    "tags",
     "slider",
+    "characterStrengths",
     "stars",
     "talkingPoints",
     "themes",
@@ -696,9 +78,12 @@
     "created",
     "title",
     "updated",
+    "excludeDistribution",
     "id",
+    "uuid",
     "url",
     "channel"
   ],
+
   "additionalProperties": false
 }

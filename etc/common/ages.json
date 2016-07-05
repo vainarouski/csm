@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "properties": {
+
+    "min":{ "$ref": "min.json" },
+
+    "max": { "$ref": "max.json" }
+  },
+
+  "required": [ "min", "max"],
+  "additionalProperties": false
+}

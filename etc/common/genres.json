@@ -1,0 +1,19 @@
+{
+  "anyOf": [
+
+    {
+      "type": "object",
+      "patternProperties": {
+        "^[0-9]+$": {
+          "type": "string",
+          "minLength": 2
+        }
+      },
+
+      "maxProperties": 5,
+      "uniqueItems": true
+    },
+
+    { "type": "array" }
+  ]
+}

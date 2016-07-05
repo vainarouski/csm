@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "properties": {
+
+    "avg": { "$ref": "avg.json" },
+
+    "count": { "$ref": "count.json" }
+  },
+
+  "required": [
+    "avg",
+    "count"
+  ],
+
+  "additionalProperties": false
+}

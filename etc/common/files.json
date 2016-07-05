@@ -1,0 +1,20 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+
+      "type": { "$ref": "type_files_video.json" },
+
+      "uri": { "$ref": "url.json" },
+
+      "lang": { "$ref": "lang.json" }
+    },
+
+    "required": ["type", "uri", "lang"],
+    "additionalProperties": false
+  },
+
+  "minItems": 1,
+  "uniqueItems": true
+}

@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "properties": {
+
+    "id": { "$ref": "id.json" },
+
+    "uuid": { "$ref": "uuid.json" },
+
+    "references": { "$ref": "references.json" },
+
+    "genres": { "$ref": "genres.json" },
+
+    "images": { "$ref": "images.json" },
+
+    "awards": { "$ref": "awards.json" },
+
+    "releaseDate": { "$ref": "releaseDate.json" },
+
+    "parentalAdvisory": { "$ref": "parentalAdvisory.json" },
+
+    "labels": { "$ref": "labels.json" },
+
+    "editedVersionAvailable": { "$ref": "editedVersionAvailable.json" },
+
+    "artists": { "$ref": "artists.json" },
+
+    "albumType": { "$ref": "albumType.json" }
+  },
+
+  "required": [
+    "id",
+    "uuid",
+    "references",
+    "genres",
+    "images", "awards",
+    "releaseDate",
+    "parentalAdvisory",
+    "labels",
+    "editedVersionAvailable",
+    "artists",
+    "albumType"],
+
+  "additionalProperties": false
+}

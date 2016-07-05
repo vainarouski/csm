@@ -1,0 +1,7 @@
+{
+  "patternProperties": {
+    "^[0-9]+$": {
+      "enum": ["Free", "Free to Try", "Paid"]
+    }
+  }
+}

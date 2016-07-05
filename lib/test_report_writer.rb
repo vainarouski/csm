@@ -52,7 +52,7 @@ module TestReportWriter
         <table id="specifications" width="900px">
           <tr><td>Test started On: #{test_report[:start_time]}</td></tr>
           <tr><td>Duration: #{test_suite_time_in_secs} secs</td></tr>
-          <tr><td>Items tested: #{test_report.size - 1}</td></tr>
+          <tr><td>Items tested: #{test_report[:number_of_tested_items] - 1}</td></tr>
         </table>
 
     EOS
@@ -62,20 +62,20 @@ module TestReportWriter
           <table id="tcs">
             <tr>
             <th>#</th>
-            <th>id</th>
             <th>Test Property Name</th>
             <th>Error Message</th>
+            <th>Properties with errors</th>
             <th class="result_field">Result</th>
             </tr>
     EOS
 
     index = 1
-    test_report.each do |tc_id, tc|
-       next if tc_id == :start_time || tc.length == 0
-      tc.each do |error_message|
+    test_report.each do |element, errors|
+       next if element == :start_time || element == :number_of_tested_items
+       errors.each do |error, ids|
       report_tc_summary += <<-EOS
             <tr>
-            <td>#{index.to_s.rjust(3,'0')}</td><td>#{tc_id}</td><td>#{error_message[:property]}</td><td>#{error_message[:message]}</td><td><font class="statusfail">FAIL</font></td>
+            <td>#{index.to_s.rjust(3,'0')}</td><td>#{element}</td><td>#{error}</td><td>#{ids.to_s}</td><td><font class="statusfail">FAIL</font></td>
             </tr>
       EOS
         index += 1

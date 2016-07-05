@@ -1,0 +1,10 @@
+{
+  "enum": [
+    "flash",
+    "html5",
+    "mobile",
+    "html5_ff",
+    "mobile_ff",
+    "prores"
+  ]
+}

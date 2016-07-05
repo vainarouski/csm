@@ -1,0 +1,23 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+
+      "title": { "$ref": "title.json"},
+
+      "id": { "$ref": "id.json" },
+
+      "uuid": { "$ref": "uuid.json" },
+
+      "url": { "$ref": "url.json" },
+
+      "summary": { "$ref": "summary.json" }
+    },
+
+    "required": [ "title", "id", "uuid"],
+    "additionalProperties": false
+  },
+
+  "uniqueItems": true
+}

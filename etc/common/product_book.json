@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "properties": {
+
+    "id": { "$ref": "id.json" },
+
+    "uuid": { "$ref": "uuid.json" },
+
+    "references": { "$ref": "references.json" },
+
+    "genres": { "$ref": "genres.json" },
+
+    "images": { "$ref": "images.json" },
+
+    "awards": { "$ref": "awards.json" },
+
+    "types": { "$ref": "types.json" },
+
+    "releaseDate": { "$ref": "releaseDate.json" },
+
+    "readingLevels": { "$ref": "readingLevels.json" },
+
+    "publishers": { "$ref": "publishers.json" },
+
+    "pages": { "$ref": "pages.json" },
+
+    "illustrators": { "$ref": "illustrators.json" },
+
+    "formats": { "$ref": "formats.json" },
+
+    "authors": { "$ref": "authors.json" }
+  },
+
+  "required": [
+    "id",
+    "uuid",
+    "references",
+    "genres",
+    "images",
+    "awards",
+    "types",
+    "releaseDate",
+    "readingLevels",
+    "publishers",
+    "pages",
+    "illustrators",
+    "formats",
+    "authors"],
+
+  "additionalProperties": false
+}

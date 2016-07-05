@@ -1,0 +1,58 @@
+{
+  "type": "object",
+  "properties": {
+
+    "id": { "$ref": "id.json" },
+
+    "uuid": { "$ref": "uuid.json" },
+
+    "references": { "$ref": "references.json" },
+
+    "genres": { "$ref": "genres.json" },
+
+    "images": { "$ref": "images.json" },
+
+    "awards": { "$ref": "awards.json" },
+
+    "releaseDate": { "$ref": "releaseDate.json" },
+
+    "rating": { "$ref": "rating_platforms_product.json" },
+
+    "developers": { "$ref": "developers.json" },
+
+    "priceStructure": { "$ref": "priceStructure.json" },
+
+    "prices": { "$ref": "prices.json" },
+
+    "platforms": { "$ref": "platforms_product_game.json" },
+
+    "assistive": { "$ref": "assistive.json" },
+
+    "assistiveAlt": { "$ref": "assistiveAlt.json" },
+
+    "specialNeeds": { "$ref": "specialNeeds.json" },
+
+    "specialNeedsAlt": { "$ref": "specialNeedsAlt.json" }
+  },
+
+  "required": [
+    "id",
+    "uuid",
+    "references",
+    "genres",
+    "images",
+    "awards",
+    "releaseDate",
+    "rating",
+    "developers",
+    "priceStructure",
+    "prices",
+    "platforms",
+    "assistive",
+    "assistiveAlt",
+    "specialNeeds",
+    "specialNeedsAlt"
+  ],
+
+  "additionalProperties": false
+}

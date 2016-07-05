@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "properties": {
+
+    "id": { "$ref": "id.json" },
+
+    "uuid": { "$ref": "uuid.json" },
+
+    "references": { "$ref": "references.json" },
+
+    "genres": { "$ref": "genres.json" },
+
+    "images": { "$ref": "images.json" },
+
+    "awards": { "$ref": "awards.json" },
+
+    "url": { "$ref": "url.json" },
+
+    "priceStructure": { "$ref": "priceStructure.json" },
+
+    "prices": { "$ref": "prices.json" },
+
+    "assistive": { "$ref": "assistive.json" },
+
+    "assistiveAlt": { "$ref": "assistiveAlt.json" },
+
+    "specialNeeds": { "$ref": "specialNeeds.json" },
+
+    "specialNeedsAlt": { "$ref": "specialNeedsAlt.json" }
+
+  },
+
+  "required": [
+    "id",
+    "uuid",
+    "references",
+    "genres",
+    "images",
+    "awards",
+    "url",
+    "priceStructure",
+    "prices",
+    "assistive",
+    "assistiveAlt",
+    "specialNeeds",
+    "specialNeedsAlt"
+  ],
+
+  "additionalProperties": false
+}

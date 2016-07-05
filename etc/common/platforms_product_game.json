@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "patternProperties": {
+    "^[0-9]+$": {
+      "name": { "$ref": "name.json" },
+
+      "rating": {
+        "$ref": "rating_platforms_product.json"
+      }
+    }
+  }
+}

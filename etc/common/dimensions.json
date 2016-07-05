@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+
+    "engagement": { "$ref": "engagement.json" },
+
+    "learning_approach": { "$ref": "learningApproach.json" },
+
+    "support": { "$ref": "support.json" }
+  },
+
+  "additionalProperties": false
+}

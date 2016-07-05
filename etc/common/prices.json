@@ -1,0 +1,10 @@
+{
+  "properties": {
+
+    "purchase": { "$ref": "purchase.json" },
+
+    "subscription": { "$ref": "subscription.json" }
+  },
+
+  "additionalProperties": false
+}

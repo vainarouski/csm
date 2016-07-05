@@ -1,0 +1,19 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+
+      "type": { "$ref": "type_references_product.json" },
+
+      "value": { "$ref": "value_references_product.json" }
+    },
+
+    "required": [
+      "type",
+      "value"
+    ],
+
+    "additionalProperties": false
+  }
+}

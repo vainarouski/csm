@@ -1,0 +1,3 @@
+{
+  "enum": ["movie", "game", "tv", "app", "music", "book", "website"]
+}

@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "properties": {
+
+    "csm_rating": { "$ref": "csmRating.json" },
+
+    "recommended_age": { "$ref": "recommendedAge.json" },
+
+    "stars": { "$ref": "stars_stats.json" },
+
+    "user_review_count": { "$ref": "userReviewCount.json" },
+
+    "required": [
+      "csm_rating",
+      "recommended_age",
+      "stars",
+      "user_review_count"
+    ],
+
+    "additionalProperties": false
+  }
+}

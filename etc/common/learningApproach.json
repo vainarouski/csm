@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "properties": {
+
+    "rating": { "$ref": "rating_learningRating.json" },
+
+    "explanation": { "$ref": "explanation.json" }
+  },
+
+  "required": [ "rating", "explanation"],
+  "additionalProperties": false
+}
